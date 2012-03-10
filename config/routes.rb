@@ -1,10 +1,13 @@
 Tipp5::Application.routes.draw do
   
+  devise_for :admins
+
   devise_for :users
 
-  get "pages/home"
-
   root :to => 'pages#home'
+
+  match '/userpage',  :to => 'pages#userpage'
+  match '/adminpage', :to => 'pages#adminpage'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

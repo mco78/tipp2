@@ -8,8 +8,10 @@ Tipp5::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  match '/admin',     :to => 'pages#admin'
   match '/userpage',  :to => 'pages#userpage'
   match '/adminpage', :to => 'pages#adminpage'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cup: MyString
+  round: MyString
+  kickoff: 2012-03-10 13:53:54
+  hometeam: MyString
+  awayteam: MyString
+  homescore: 1
+  awayscore: 1
+
+two:
+  cup: MyString
+  round: MyString
+  kickoff: 2012-03-10 13:53:54
+  hometeam: MyString
+  awayteam: MyString
+  homescore: 1
+  awayscore: 1

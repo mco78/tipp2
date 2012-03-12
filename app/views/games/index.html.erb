@@ -1,0 +1,35 @@
+<h1>Spiele</h1>
+
+<table class="condensed-table zebra-striped">
+  <tr>
+    <th>Cup</th>
+    <th>Round</th>
+    <th>Kick Off</th>
+    <th>Home Team</th>
+    <th>Away Team</th>
+    <th>Home Score</th>
+    <th>Away Score</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.cup %></td>
+    <td><%= game.round %></td>
+    <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
+    <td><%= game.hometeam %></td>
+    <td><%= game.awayteam %></td>
+    <td><%= game.homescore %></td>
+    <td><%= game.awayscore %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neues Spiel', new_game_path %>

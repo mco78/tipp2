@@ -4,6 +4,8 @@ Tipp5::Application.routes.draw do
 
   devise_for :users
 
+  resources :games
+
   root :to => 'pages#home'
 
   match '/userpage',  :to => 'pages#userpage'

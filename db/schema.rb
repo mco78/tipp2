@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310125354) do
+ActiveRecord::Schema.define(:version => 20120312210409) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20120310125354) do
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+
+  create_table "bets", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "home_bet"
+    t.integer  "away_bet"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "games", :force => true do |t|
     t.string   "cup"

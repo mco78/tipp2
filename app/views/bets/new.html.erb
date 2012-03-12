@@ -1,0 +1,22 @@
+<h1>Tipp abgeben</h1>
+
+<%= @game.hometeam %> - <%= @game.awayteam %>
+
+<%= form_for(@bet) do |f| %>
+	
+	<%= f.hidden_field :game_id, :value => @game.id %>
+
+	<div> <%= @game.hometeam %>  
+		<span class="field">
+			<%= f.number_field :home_bet %> 
+		</span>
+	</div>
+	<div> <%= @game.awayteam %>  
+		<span class="field"> 
+			<%= f.number_field :away_bet %> 
+		</span>
+	</div>
+	<div class="actions">
+	    <%= f.submit %>
+	 </div>
+<% end -%>

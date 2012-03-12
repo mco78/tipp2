@@ -6,11 +6,14 @@ Tipp5::Application.routes.draw do
 
   resources :games
 
+  resources :bets
+
   root :to => 'pages#home'
 
   match '/admin',     :to => 'pages#admin'
   match '/userpage',  :to => 'pages#userpage'
   match '/adminpage', :to => 'pages#adminpage'
+  match '/abgabe',  :to => 'bets#abgabe'
 
 
   # The priority is based upon order of creation:

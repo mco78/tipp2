@@ -1,0 +1,58 @@
+<h1>Tippabgabe</h1>
+
+<table class="condensed-table zebra-striped">
+	<thread>
+		<tr>
+			<th>Anstoß</th>
+			<th></th>
+			<th>Ergebnis</th>
+			<th>Tipp</th>
+			<th>Punkte</th>
+		</tr>
+	</thread>
+	<tbody>
+	<% @games.each do |game| %>
+		<% bet = @bets.find_by_game_id(game.id) %>
+		<tr>
+			<td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
+			<td><%= game.hometeam %> - <%= game.awayteam %></td>
+			<td>
+				<% if game.homescore.nil? %>
+					 - : -
+				<% else %>
+					<%= game.homescore %> : <%= game.awayscore %>
+				<% end %>
+			</td>
+			<td>
+				<% if Time.now >= game.kickoff %>
+					<% if @bets.exists?(:game_id => game.id) %>
+						<%= bet.home_bet %> : <%= bet.away_bet %>
+					<% else %>
+						- : -
+					<% end %>
+				<% else %>
+					<% if @bets.exists?(:game_id => game.id) %>
+						<%= bet.home_bet %> : <%= bet.away_bet %> |
+						<%= link_to 'ändern', edit_bet_path(bet, :game_id => game.id) %> | 
+						<%= link_to 'löschen', bet, :method => :delete, :confirm => "sicher?" %>
+					<% else %>
+					<%= link_to 'Tipp abgeben', new_bet_path(:game_id => game.id) %>
+					<% end %>
+				<% end %>
+			</td>
+			<th>
+				<!-- dieser Block muss geändert werden, wenn bet die column points erhalten hat -->
+				<% if game.homescore.nil? %>
+					--
+				<% else %>
+					<% unless bet.nil? %>
+						Pkt.
+					<% else %>
+						0
+					<% end %>
+				<% end %>
+			</th>
+		</tr>	
+	<% end %>
+	</tbody>
+</table>

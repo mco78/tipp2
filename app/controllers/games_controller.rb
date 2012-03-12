@@ -3,18 +3,22 @@ class GamesController < ApplicationController
 	before_filter :authenticate_admin!
 	
 	def index
+		@title = "Übersicht Spiele"
 		@games = Game.all
 	end
 
 	def show
+		@title = "Spiel anzeigen"
 		@game = Game.find(params[:id])
 	end
 
 	def new
+		@title = "Spiel anlegen"
 		@game = Game.new
 	end
 
 	def edit
+		@title = "Spiel bearbeiten"
 		@game = Game.find(params[:id])
 	end
 

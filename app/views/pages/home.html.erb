@@ -1,14 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<% if user_signed_in? %>
-	<p>Super! Du bist angemeldet!</p>
-<% end %>
-
-<p>Hier gibt es zwei Unterseiten:</p>
+<p>Navigation</p>
 <ul>
-	<li><%= link_to "Userpage", userpage_path %></li>
-	<li><%= link_to "Adminpage", adminpage_path %></li>
+	<li><%= link_to "Tippabgabe", abgabe_path %></li>
 </ul>
 
 

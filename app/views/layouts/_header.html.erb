@@ -1,0 +1,28 @@
+<div id="header">
+  <div id="head_right">
+    <div id="session_info">
+      <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> or
+          <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+
+      <% if admin_signed_in? %>
+          <br> Signed in as admin <%= current_admin.email %>. Not you?
+          <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
+      <% end %>
+    </div>
+    </br>
+    <div id="timenow">
+      <%= Time.now.strftime("%d.%m.%y %H:%M") %> 
+    </div>
+  </div>
+
+  <ul id="nav">
+    <li id="li_home"><%= link_to "Home", root_path %></li>
+    <li id="li_abgabe"><%= link_to "Tippabgabe", abgabe_path %></li>
+  </ul>
+    
+</div>

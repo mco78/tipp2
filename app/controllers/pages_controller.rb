@@ -10,4 +10,12 @@ class PagesController < ApplicationController
 		@title = "Admin Übersicht"
 	end
 
+	def about
+		@title = "Über das Projekt"
+	end
+
+	def impressum
+		@title = "Impressum"
+	end
+
 end

@@ -1,9 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+	<div class="span8" id="welcome">
+		<h1 id="headline">2Tipp - Das Fussball Tippspiel</h1>
+		<p>2Tipp ist ein klassisches Fussball-Tippspiel. Melde Dich an, tippe auf Spiele, sammel Punkte und gewinne gegen andere Spieler.</p>
 
-<p>Navigation</p>
-<ul>
-	<li><%= link_to "Tippabgabe", abgabe_path %></li>
-</ul>
+		<p>Diese Website ist ein privates Hobbyprojekt, welches ständig weiterentwickelt wird. Daher kann es immer wieder zu technischen Schwierigkeiten kommen, die ich schon jetzt entschuldige. Für Vorschläge, Kritik und Hilfe wird demnächst ein Feedback-Bereich eingerichtet.</p>
 
+		<% if user_signed_in? %>
+			<%= link_to "zur Tippabgabe", abgabe_path, :class => "signup_button round" %>
+		<% else %>
+			<%= link_to "Jetzt mitspielen!", new_user_registration_path, :class => "signup_button round" %>
+			<%= link_to "Schon angemeldet? Log in",  user_session_path, :class => "redirect_signin" %>
+		<% end -%>
+	</div>
+
+	<div class="span4">
+		<h2>Neuigkeiten</h2>
+		<p>Hier werden später Neuigkeiten zum Projekt stehen. Noch ist hier Blindtext untergebracht</p>
+
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+	</div>
+</div>
 

@@ -1,0 +1,119 @@
+/* Header */
+
+#header {
+  background-color: #F1F1F1;
+  overflow: hidden;
+  height: 70px;
+}
+
+/* Head Right */
+
+#head_right {
+  float: right;
+  padding-right: 10px;
+  padding-left: 20px;
+  width: 40%;
+}
+
+#session_info  {
+  float: right;
+}
+
+#session_info a {
+  font-weight: bold;
+}
+
+#timenow {
+  float: right;
+  font-size: smaller;
+}
+
+
+/* Navigation */
+
+#container ul#nav {
+  overflow: hidden;
+  float: left;
+  height: 100px;
+  margin: 0;
+}
+
+#nav li {
+  float: left;
+  font-size: 120%;
+  font-weight: bold;
+  margin-right: 20px;
+  list-style-type: none;
+}
+
+#nav li a {
+  margin-top: 50px;
+  line-height: 20px;
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Main */
+
+.main {
+  margin-top: 20px;
+  /*margin-left: 20px;
+  margin-right: 20px;*/
+}
+
+/* Sign up or in */
+
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: white;
+  background: #595855;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+/* Log in */
+a.redirect_signin {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  font-size: 100%;
+
+}
+
+/* Footer */
+
+#footer {
+  background-color: #F1F1F1;
+  overflow: hidden;
+  height: 40px;
+  margin-top: 20px;
+}
+
+#footer_nav ul {
+  float: left;
+}
+
+#footer_nav li {
+  float: left;
+  margin-top: 10px;
+  margin-right: 20px;
+  list-style-type: none;
+}
+

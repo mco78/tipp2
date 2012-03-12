@@ -13,7 +13,11 @@ Tipp5::Application.routes.draw do
   match '/admin',     :to => 'pages#admin'
   match '/userpage',  :to => 'pages#userpage'
   match '/adminpage', :to => 'pages#adminpage'
-  match '/abgabe',  :to => 'bets#abgabe'
+  
+  match '/abgabe',    :to => 'bets#abgabe'
+
+  match '/about',     :to => 'pages#about'
+  match '/impressum', :to => 'pages#impressum'
 
 
   # The priority is based upon order of creation:

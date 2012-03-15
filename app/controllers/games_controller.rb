@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 	before_filter :authenticate_admin!
 	
 	def index
-		@title = "Übersicht Spiele"
+		@title = "Uebersicht Spiele"
 		@games = Game.all
 	end
 

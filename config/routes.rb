@@ -4,7 +4,17 @@ Tipp5::Application.routes.draw do
 
   devise_for :users
 
-  resources :games
+  # match 'games/add_result' => 'games#add_result'
+  resources :games do
+    collection do
+      get :result_index
+    end
+    member do
+      get :fix_result
+      put :save_result
+    end
+  end
+
 
   resources :bets
 
@@ -18,6 +28,9 @@ Tipp5::Application.routes.draw do
 
   match '/about',     :to => 'pages#about'
   match '/impressum', :to => 'pages#impressum'
+  match '/uebersicht', :to => 'users#index'
+
+
 
 
   # The priority is based upon order of creation:

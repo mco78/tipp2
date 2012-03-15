@@ -65,36 +65,10 @@
 /* Sign up or in */
 
 
-a.signup_button {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-  width: 190px;
-  color: white;
-  background: #595855;
-  font-size: 150%;
-  font-weight: bold;
-  padding: 20px;
-}
-
-/* Round corners */
-
-.round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
-}
-
-/* Log in */
-a.redirect_signin {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-  width: 190px;
-  font-size: 100%;
-
+.zusatzlink a {
+  color: red;
+  font-size: 10px;
+  font-weight: 50;
 }
 
 /* Footer */

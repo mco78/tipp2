@@ -4,8 +4,16 @@
 
 <h3>Menü</h3>
 
-<ul>
-	<li><%= link_to "Spiele bearbeiten", games_path %></li>
-</ul>
+<div class="row">
+	<div class="span4">
 
+		<ul class="nav nav-list">
+			<li><%= link_to "Spiele bearbeiten", games_path %></li>
+			<li><%= link_to "Ergebnisse eintragen", :controller => "games", :action => "result_index"%></li>
+		</ul>
+	</div>
+	<div class="span8">
+	</div>
+</div>
+<br>
 <p>Hier kommt später eine Übersicht mit den aktuellen Spielen, um Ergebnisse direkt einzugeben.</p>

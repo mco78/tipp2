@@ -1,0 +1,38 @@
+<h1>Tippübersicht</h1>
+
+<table class="table table-striped table-condensed">
+	<tr>
+		<th>Spiel</th>
+		<th>Ergebnis</th>
+		<% @users.each do |user| %>
+			<th><%= user.email %></th>
+		<% end -%>
+	</tr>
+	<% @game_bets.each do |game, bets| %>
+		<tr>
+			<td><%= game.hometeam %> - <%= game.awayteam %></td>
+			<td>
+				<% if game.awayscore.nil? %>
+					-:-
+				<% else %>
+					<%= game.homescore %> : <%= game.awayscore %>
+				<% end -%>
+			</td>
+			<% @users.each do |user| %>
+				<% if bets.has_key?(user) %>
+					<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %> | <b><%= bets[user].points %></b></td>
+				<% else %>
+					<td>-:- | - </td>
+				<% end -%>
+			<% end -%>
+		</tr>
+	<% end -%>
+	<tr>
+		<td></td>
+		<td><b>Punkte:</b></td>
+		<td>
+			<% @users.each do |user| %>
+				<%= sum_points(user) %>
+			<% end -%>
+		</td>
+</table>

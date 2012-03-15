@@ -1,14 +1,10 @@
-<h3>Spiele bearbeiten</h3>
+<h3>Ergebnisse eintragen</h3>
 
 <table class="table table-striped table-condensed">
   <tr>
-    <th>Cup</th>
-    <th>Round</th>
     <th>Kick Off</th>
     <th>Home Team</th>
     <th>Away Team</th>
-    <th>Home Score</th>
-    <th>Away Score</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,16 +12,11 @@
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.cup %></td>
-    <td><%= game.round %></td>
     <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
     <td><%= game.hometeam %></td>
     <td><%= game.awayteam %></td>
-    <td><%= game.homescore %></td>
-    <td><%= game.awayscore %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Ergebnis eintragen", fix_result_game_path(game) %></td>
+
   </tr>
 <% end %>
 </table>

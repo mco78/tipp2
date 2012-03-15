@@ -1,3 +1,4 @@
+
 <%- if controller_name != 'sessions' %>
   <%= link_to "Sign in", new_session_path(resource_name) %><br />
 <% end -%>
@@ -14,7 +15,7 @@
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
 <% end -%>
 
-<!--folgender block wg fehlermeldung gelöscht-->
+<!--folgender block wg fehlermeldung geloescht-->
 <% if false %>
 <!---->
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
@@ -22,7 +23,7 @@
 <% end -%>
 <!---->
 <% end %>
-<!--block gelöscht -->
+<!--block geloescht -->
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>

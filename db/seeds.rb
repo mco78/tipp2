@@ -26,12 +26,12 @@ Game.create(:cup => "EM",
 			:round => "Vorrunde",
 			:kickoff => "06/09/2012 18:00",
 			:hometeam => 'Niederlande',
-			:awayteam => 'Dänemark'
+			:awayteam => 'Daenemark'
 			)
 
 Game.create(:cup => "EM",
 			:round => "Vorrunde",
 			:kickoff => "06/09/2012 20:45",
 			:hometeam => 'Deutschland',
-			:awayteam => 'Dänemark'
+			:awayteam => 'Daenemark'
 			)

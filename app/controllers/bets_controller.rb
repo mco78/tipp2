@@ -47,7 +47,7 @@ class BetsController < ApplicationController
 		@bet = Bet.find(params[:id])
 
 		if @bet.update_attributes(params[:bet])
-			flash[:success] = "Tipp geändert."
+			flash[:success] = "Tipp geaendert."
 			redirect_to abgabe_path
 		else
 			flash[:error] = "Fehler!"
@@ -57,7 +57,7 @@ class BetsController < ApplicationController
 
 	def destroy
 		Bet.find(params[:id]).destroy
-		flash[:success] = "Tipp gelöscht."
+		flash[:success] = "Tipp geloescht."
 		redirect_to :back
 	end
 

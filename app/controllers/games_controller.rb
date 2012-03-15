@@ -48,7 +48,7 @@ class GamesController < ApplicationController
 
 	def destroy
 		Game.find(params[:id]).destroy
-		flash[:success] = "Spiel gelöscht"
+		flash[:success] = "Spiel geloescht"
 		redirect_to :back
 	end
 

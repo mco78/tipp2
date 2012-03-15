@@ -34,8 +34,8 @@
 					<% if @bets.exists?(:game_id => game.id) %>
 						<%= bet.home_bet %> : <%= bet.away_bet %>
 						<% if game.homescore.nil? %>
-							 | <%= link_to 'ändern', edit_bet_path(bet, :game_id => game.id) %> | 
-							<%= link_to 'löschen', bet, :method => :delete, :confirm => "sicher?" %>
+							 | <%= link_to 'aendern', edit_bet_path(bet, :game_id => game.id) %> | 
+							<%= link_to 'loeschen', bet, :method => :delete, :confirm => "sicher?" %>
 						<% end %>
 					<% else %>
 					<%= link_to 'Tipp abgeben', new_bet_path(:game_id => game.id) %>

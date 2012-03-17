@@ -30,9 +30,10 @@
 	<tr>
 		<td></td>
 		<td><b>Punkte:</b></td>
-		<td>
-			<% @users.each do |user| %>
-				<%= sum_points(user) %>
-			<% end -%>
-		</td>
+		
+		<% @users.each do |user| %>
+			<td>
+			<%= sum_points(user) %>
+			</td>
+		<% end -%>
 </table>

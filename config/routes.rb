@@ -3,6 +3,7 @@ Tipp5::Application.routes.draw do
   devise_for :admins
 
   devise_for :users
+  resources :users
 
   # match 'games/add_result' => 'games#add_result'
   resources :games do
@@ -14,7 +15,6 @@ Tipp5::Application.routes.draw do
       put :save_result
     end
   end
-
 
   resources :bets
 
@@ -28,7 +28,7 @@ Tipp5::Application.routes.draw do
 
   match '/about',     :to => 'pages#about'
   match '/impressum', :to => 'pages#impressum'
-  match '/uebersicht', :to => 'users#index'
+  match '/uebersicht', :to => 'bets#index'
 
 
 

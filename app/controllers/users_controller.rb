@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
 
-	before_filter :authenticate_user!
-
+	before_filter :authenticate_admin!
+	
 	def index
-		@title = "Tippuebersicht"
+		@title = "Uebersicht User"
 		@users = User.all
-		@game_bets = Game.all.map { |game| [game, game.bets.index_by(&:user)] }
+	end
+
+	def destroy
+		User.find(params[:id]).destroy
+		flash[:success] = "User geloescht"
+		redirect_to :back
 	end
 end

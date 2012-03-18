@@ -9,6 +9,12 @@ class BetsController < ApplicationController
 		@bets = @user.bets
 	end
 
+	def index
+		@title = "Tippuebersicht"
+		@users = User.all
+		@game_bets = Game.all.map { |game| [game, game.bets.index_by(&:user)] }
+	end
+
 	def new
 		@title = "Tipp abgeben"
 		@bet = Bet.new

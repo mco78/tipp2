@@ -19,10 +19,30 @@
 				<% end -%>
 			</td>
 			<% @users.each do |user| %>
-				<% if bets.has_key?(user) %>
-					<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %> | <b><%= bets[user].points %></b></td>
+				<% if user == current_user %>
+					<% if bets.has_key?(user) %>
+						<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
+						<% unless bets[user].points.nil? %>
+							 | <b><%= bets[user].points %></b>
+						<% end -%>
+						</td>
+					<% else %>
+						<td> </td>
+					<% end -%>
 				<% else %>
-					<td>-:- | - </td>
+					<% if Time.now >= game.kickoff %>
+						<% if bets.has_key?(user) %>
+							<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
+							<% unless bets[user].points.nil? %>
+								 | <b><%= bets[user].points %></b>
+							<% end -%>
+							</td>
+						<% else %>
+							<td> </td>
+						<% end -%>
+					<% else %>
+						<td>-:-</td>
+					<% end -%>
 				<% end -%>
 			<% end -%>
 		</tr>
@@ -33,7 +53,7 @@
 		
 		<% @users.each do |user| %>
 			<td>
-			<%= sum_points(user) %>
+			<b><%= sum_points(user) %></b>
 			</td>
 		<% end -%>
 </table>

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
 	def home
 		@title = "Homepage"
-		@posts = Post.news.limit(3)
+		@posts = Post.limit(5)
 	end
 
 	def admin

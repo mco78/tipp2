@@ -75,6 +75,8 @@ class GamesController < ApplicationController
 				bet.save
 				flash[:success] = "Punkte verteilt."
 			end
+			head = "#{@game.hometeam} - #{@game.awayteam} #{@game.homescore}:#{@game.awayscore}"
+			Post.create(:headline => head, :category => 'System', :content => '[System: Punkte verteilt.]')
 			redirect_to result_index_games_path
 		else
 			flash[:error] = "Fehler!"

@@ -19,9 +19,17 @@
 
 	<div class="span4">
 		<h2>Neuigkeiten</h2>
-		<p>Hier werden spaeter Neuigkeiten zum Projekt stehen. Noch ist hier Blindtext untergebracht</p>
-
-		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+		<p></p>
+		<% @posts.each do |post| %>
+			<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
+			<h3><%= post.headline %></h3>
+			<p><%= truncate(post.content, :length => 120, :separator => ' ') %>
+				<% if post.content.length > 120 %>
+					<%= link_to "mehr", post %>
+				<% end %>
+			</p>
+		<% end %>
+		<h3><%= link_to "Alle News", news_path %></h3>
 	</div>
 </div>
 

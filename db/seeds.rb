@@ -10,6 +10,8 @@ Bet.delete_all
 
 Game.delete_all
 
+Post.delete_all
+
 Game.create(:cup => "EM",
 			:round => "Vorrunde, 1.Spt.",
 			:kickoff => "06/08/2012 18:00",
@@ -178,3 +180,16 @@ Game.create(:cup => "EM",
 			:hometeam => 'Schweden',
 			:awayteam => 'Frankreich'
 			)
+
+Post.create(:headline 	=> "Hello World!",
+			:category 	=> "News",
+			:content	=> "Dies ist der erste Newsbeitrag, welcher automatisch 
+							erstellt wurde. Lorem ipsum dolor sit amet, consetetur 
+							sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
+							ut labore et dolore magna aliquyam erat, sed diam voluptua.")
+
+Post.create(:headline 	=> "World still there?",
+			:category 	=> "News",
+			:content	=> "Dies ist der zweite Newsbeitrag. Lorem ipsum dolor sit amet, consetetur 
+							sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
+							ut labore et dolore magna aliquyam erat, sed diam voluptua.")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120315202239) do
+ActiveRecord::Schema.define(:version => 20120323203242) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20120315202239) do
     t.string   "awayteam"
     t.integer  "homescore"
     t.integer  "awayscore"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "headline"
+    t.string   "category"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

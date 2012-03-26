@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 	before_filter :authenticate_admin!
 	
 	def index
-		@title = "Uebersicht Spiele"
+		@title = "Übersicht Spiele"
 		@games = Game.all
 	end
 
@@ -48,7 +48,7 @@ class GamesController < ApplicationController
 
 	def destroy
 		Game.find(params[:id]).destroy
-		flash[:success] = "Spiel geloescht"
+		flash[:success] = "Spiel gelöscht"
 		redirect_to :back
 	end
 

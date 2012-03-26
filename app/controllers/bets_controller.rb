@@ -10,7 +10,7 @@ class BetsController < ApplicationController
 	end
 
 	def index
-		@title = "Tippuebersicht"
+		@title = "Tippübersicht"
 		@users = User.all
 		@game_bets = Game.all.map { |game| [game, game.bets.index_by(&:user)] }
 	end
@@ -53,7 +53,7 @@ class BetsController < ApplicationController
 		@bet = Bet.find(params[:id])
 
 		if @bet.update_attributes(params[:bet])
-			flash[:success] = "Tipp geaendert."
+			flash[:success] = "Tipp geändert."
 			redirect_to abgabe_path
 		else
 			flash[:error] = "Fehler!"
@@ -63,7 +63,7 @@ class BetsController < ApplicationController
 
 	def destroy
 		Bet.find(params[:id]).destroy
-		flash[:success] = "Tipp geloescht."
+		flash[:success] = "Tipp gelöscht."
 		redirect_to :back
 	end
 

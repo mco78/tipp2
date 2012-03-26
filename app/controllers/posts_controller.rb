@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	before_filter :authenticate_admin!, :except => [:show, :news]
 	
 	def index
-		@title = "Uebersicht Posts"
+		@title = "Übersicht Posts"
 		@posts = Post.all
 	end
 
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
 
 	def destroy
 		Post.find(params[:id]).destroy
-		flash[:success] = "Post geloescht"
+		flash[:success] = "Post gelöscht"
 		redirect_to :back
 	end
 end

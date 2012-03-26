@@ -30,7 +30,7 @@ Game.create(:cup => "EM",
 			:round => "Vorrunde, 1.Spt.",
 			:kickoff => "06/09/2012 18:00",
 			:hometeam => 'Niederlande',
-			:awayteam => 'Daenemark'
+			:awayteam => 'Dänemark'
 			)
 
 Game.create(:cup => "EM",
@@ -85,7 +85,7 @@ Game.create(:cup => "EM",
 Game.create(:cup => "EM",
 			:round => "Vorrunde, 2.Spt.",
 			:kickoff => "06/13/2012 18:00",
-			:hometeam => 'Daenemark',
+			:hometeam => 'Dänemark',
 			:awayteam => 'Portugal'
 			)
 
@@ -148,7 +148,7 @@ Game.create(:cup => "EM",
 Game.create(:cup => "EM",
 			:round => "Vorrunde, 3.Spt.",
 			:kickoff => "06/17/2012 20:45",
-			:hometeam => 'Daenemark',
+			:hometeam => 'Dänemark',
 			:awayteam => 'Deutschland'
 			)
 

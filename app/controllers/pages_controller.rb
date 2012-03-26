@@ -8,11 +8,11 @@ class PagesController < ApplicationController
 	end
 
 	def admin
-		@title = "Admin Uebersicht"
+		@title = "Admin Übersicht"
 	end
 
 	def about
-		@title = "Ueber das Projekt"
+		@title = "Über das Projekt"
 	end
 
 	def impressum

@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 class BetsController < ApplicationController
 
 	before_filter :authenticate_user!
@@ -10,7 +11,7 @@ class BetsController < ApplicationController
 	end
 
 	def index
-		@title = "Tippuebersicht"
+		@title = "Tippübersicht"
 		@users = User.all
 		@game_bets = Game.all.map { |game| [game, game.bets.index_by(&:user)] }
 	end

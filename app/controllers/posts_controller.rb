@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 class PostsController < ApplicationController
 
 	before_filter :authenticate_admin!, :except => [:show, :news]

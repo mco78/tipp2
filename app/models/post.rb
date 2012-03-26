@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 class Post < ActiveRecord::Base
 
 	validates :headline, 	:presence => true

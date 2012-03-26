@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 class Bet < ActiveRecord::Base
 
 	belongs_to :user

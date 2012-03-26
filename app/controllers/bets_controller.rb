@@ -10,7 +10,7 @@ class BetsController < ApplicationController
 	end
 
 	def index
-		@title = "Tippübersicht"
+		@title = "Tippuebersicht"
 		@users = User.all
 		@game_bets = Game.all.map { |game| [game, game.bets.index_by(&:user)] }
 	end

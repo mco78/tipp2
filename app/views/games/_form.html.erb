@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :round_id, :value => @round.id %>
+
+  <h4>Wettbewerb: <%= @cup.name %></h4>
+  <h4>Spieltag: <%= @round.name %></h4>
+  <br><br>
+
   <div class="field">
     <%= f.label :kickoff %><br />
     <%= f.datetime_select :kickoff %>
-  </div>
-  <div class="field">
-    <%= f.label :cup %><br />
-    <%= f.text_field :cup %>
-  </div>
-  <div class="field">
-    <%= f.label :round %><br />
-    <%= f.text_field :round %>
   </div>
   <div class="field">
     <%= f.label :hometeam %><br />
@@ -31,16 +29,17 @@
     <%= f.label :awayteam %><br />
     <%= f.text_field :awayteam %>
   </div>
-  <!--hier waren mal die felder fuer die Ergebnisse-->
-  <div class="field">
-    <%= f.label :homescore %><br />
-    <%= f.number_field :homescore %>
-  </div>
-  <div class="field">
-    <%= f.label :awayscore %><br />
-    <%= f.number_field :awayscore %>
-  </div>
-  <!-- ende -->
+  <!--hier waren mal die felder fuer die Ergebnisse -->
+  <% unless @game.awayscore.nil? %>
+    <div class="field">
+      <%= f.label :homescore %><br />
+      <%= f.number_field :homescore %>
+    </div>
+    <div class="field">
+      <%= f.label :awayscore %><br />
+      <%= f.number_field :awayscore %>
+    </div>
+  <% end -%>
   <div class="actions">
     <%= f.submit %>
   </div>

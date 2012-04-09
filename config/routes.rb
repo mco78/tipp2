@@ -6,6 +6,11 @@ Tipp5::Application.routes.draw do
   resources :users
 
   # match 'games/add_result' => 'games#add_result'
+  resources :cups do
+    resources :rounds do
+    end
+  end
+
   resources :games do
     collection do
       get :result_index
@@ -15,7 +20,7 @@ Tipp5::Application.routes.draw do
       put :save_result
     end
   end
-
+  
   resources :bets
 
   resources :posts

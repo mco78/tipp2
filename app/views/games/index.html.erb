@@ -1,5 +1,8 @@
 <h3>Spiele bearbeiten</h3>
 
+<h4>Wettbewerb: <%= @cup.name %></h4>
+<h4>Spieltag: <%= @round.name %></h4>
+
 <table class="table table-striped table-condensed">
   <tr>
     <th>Cup</th>
@@ -15,22 +18,25 @@
   </tr>
 
 <% @games.each do |game| %>
-  <tr>
-    <td><%= game.cup %></td>
-    <td><%= game.round %></td>
-    <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
-    <td><%= game.hometeam %></td>
-    <td><%= game.awayteam %></td>
-    <td><%= game.homescore %></td>
-    <td><%= game.awayscore %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+    <% round = Round.find(game.round_id) %>
+    <% cup = Cup.find(round.cup_id) %>
+    <tr>
+        <td><%= cup.name %></td>
+        <td><%= round.name %></td>
+        <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
+        <td><%= game.hometeam %></td>
+        <td><%= game.awayteam %></td>
+        <td><%= game.homescore %></td>
+        <td><%= game.awayscore %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, :confirm => 'Sicher?', :method => :delete %></td>
+      </tr>
+    <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Neues Spiel', new_game_path %> <br />
+<%= link_to 'Neues Spiel', new_game_path(:cup_id => @cup.id, :round_id => @round.id) %> <br />
+<%= link_to 'Spieltagsübersicht', cup_rounds_path(@cup) %><br />
 <%= link_to 'Zurück zur Admin Übersicht', admin_path %>

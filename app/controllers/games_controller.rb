@@ -6,22 +6,38 @@ class GamesController < ApplicationController
 	
 	def index
 		@title = "Übersicht Spiele"
-		@games = Game.all
+
+		if params[:round_id].nil?
+			next_game = Game.where("kickoff >= ?", Time.now).first
+			@round = Round.find(next_game.round_id)
+			@cup = Cup.find(@round.cup_id)
+			@games = Game.where(:round_id => next_game.round_id)
+		else
+			@round = Round.find(params[:round_id])
+			@cup = Cup.find(@round.cup_id)
+			@games = Game.where(:round_id => params[:round_id])
+		end
 	end
 
 	def show
 		@title = "Spiel anzeigen"
 		@game = Game.find(params[:id])
+		@round = Round.find(@game.round_id)
+		@cup = Cup.find(@round.cup_id)
 	end
 
 	def new
 		@title = "Spiel anlegen"
+		@cup = Cup.find(params[:cup_id])
+		@round = Round.find(params[:round_id])
 		@game = Game.new
 	end
 
 	def edit
 		@title = "Spiel bearbeiten"
 		@game = Game.find(params[:id])
+		@round = Round.find(@game.round_id)
+		@cup = Cup.find(@round.cup_id)
 	end
 
 	def create
@@ -56,7 +72,7 @@ class GamesController < ApplicationController
 
 	def result_index
 		@title = "Ergebnisse eintragen"
-		@games = Game.where( :homescore => nil)
+		@games = Game.where( :homescore => nil).order(:kickoff)
 	end
 
 	def fix_result

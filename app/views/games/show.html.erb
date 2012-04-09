@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Kickoff:</b>
-  <%= @game.kickoff %>
+  <b>Anstoß:</b>
+  <%= @game.kickoff.strftime("%d.%m.%y %H:%M") %>
 </p>
 
 <p>
-  <b>Cup:</b>
-  <%= @game.cup %>
+  <b>Wettbewerb:</b>
+  <%= @cup.name %>
 </p>
 
 <p>
-  <b>Round</b>
-  <%= @game.round %>
+  <b>Spieltag:</b>
+  <%= @round.name %>
 </p>
 
 <p>
-  <b>Home team:</b>
+  <b>Heim:</b>
   <%= @game.hometeam %>
 </p>
 
 <p>
-  <b>Away team:</b>
+  <b>Auswärts:</b>
   <%= @game.awayteam %>
 </p>
 
@@ -36,5 +36,5 @@
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= link_to 'Back', games_path(:round_id => @round.id) %>
 

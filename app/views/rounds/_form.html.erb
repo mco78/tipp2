@@ -1,0 +1,30 @@
+<%= form_for [@cup, @round] do |f| %>
+
+  <% if @round.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @round.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :cup_id, :value => @cup.id %>
+
+  <h3>Wettbewerb <%= @cup.name %></h3>
+
+  <div class="field">
+    <%= f.label :leg %><br />
+    <%= f.text_field :leg %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

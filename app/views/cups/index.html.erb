@@ -1,0 +1,26 @@
+<h3>Wettbewerbe bearbeiten</h3>
+
+<table class="table table-striped table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Erstellt am</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cups.each do |cup| %>
+    <tr>
+        <td><%= cup.name %></td>
+        <td><%= cup.created_at.strftime("%d.%m.%y") %></td>
+        <td><%= link_to 'ansehen', cup_rounds_url(cup) %></td>
+        <td><%= link_to 'ändern', edit_cup_path(cup) %></td>
+        <td><%= link_to 'löschen', cup, :confirm => 'Sicher? Nur löschen, wenn keine Spieltage mehr im Wettbewerb!', :method => :delete %></td>
+      </tr>
+    <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neuer Wettbewerb', new_cup_path %> <br />
+<%= link_to 'Zurück zur Admin Übersicht', admin_path %>

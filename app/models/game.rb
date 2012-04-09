@@ -3,8 +3,9 @@ class Game < ActiveRecord::Base
 
 	has_many :bets
 	has_many :users, :through => :bets
+	belongs_to :round
 
-	validates :cup,			:presence => true
+	validates :round_id,	:presence => true
 	validates :kickoff, 	:presence => true
 	validates :hometeam,	:presence => true
 	validates :awayteam,	:presence => true

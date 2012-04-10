@@ -22,22 +22,22 @@
     <%= f.datetime_select :kickoff %>
   </div>
   <div class="field">
-    <%= f.label :hometeam %><br />
-    <%= f.text_field :hometeam %>
+    <%= f.label :home_team %><br />
+    <%= collection_select(:game, :home_team, @teams, :id, :name, options ={:prompt => "Team auswählen"}) %>
   </div>
   <div class="field">
-    <%= f.label :awayteam %><br />
-    <%= f.text_field :awayteam %>
+    <%= f.label :away_team %><br />
+    <%= collection_select(:game, :away_team, @teams, :id, :name, options ={:prompt => "Team auswählen"}) %>
   </div>
   <!--hier waren mal die felder fuer die Ergebnisse -->
-  <% unless @game.awayscore.nil? %>
+  <% unless @game.away_score.nil? %>
     <div class="field">
-      <%= f.label :homescore %><br />
-      <%= f.number_field :homescore %>
+      <%= f.label :home_score %><br />
+      <%= f.number_field :home_score %>
     </div>
     <div class="field">
-      <%= f.label :awayscore %><br />
-      <%= f.number_field :awayscore %>
+      <%= f.label :away_score %><br />
+      <%= f.number_field :away_score %>
     </div>
   <% end -%>
   <div class="actions">

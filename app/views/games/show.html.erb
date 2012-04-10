@@ -17,22 +17,22 @@
 
 <p>
   <b>Heim:</b>
-  <%= @game.hometeam %>
+  <%= Team.find(@game.home_team).name %>
 </p>
 
 <p>
   <b>Auswärts:</b>
-  <%= @game.awayteam %>
+  <%= Team.find(@game.away_team).name %>
 </p>
 
 <p>
   <b>Home score:</b>
-  <%= @game.homescore %>
+  <%= @game.home_score %>
 </p>
 
 <p>
   <b>Away score:</b>
-  <%= @game.awayscore %>
+  <%= @game.away_score %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |

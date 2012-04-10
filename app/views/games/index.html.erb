@@ -24,10 +24,10 @@
         <td><%= cup.name %></td>
         <td><%= round.name %></td>
         <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
-        <td><%= game.hometeam %></td>
-        <td><%= game.awayteam %></td>
-        <td><%= game.homescore %></td>
-        <td><%= game.awayscore %></td>
+        <td><%= Team.find(game.home_team).name %></td>
+        <td><%= Team.find(game.away_team).name %></td>
+        <td><%= game.home_score %></td>
+        <td><%= game.away_score %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, :confirm => 'Sicher?', :method => :delete %></td>

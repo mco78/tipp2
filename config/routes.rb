@@ -25,6 +25,8 @@ Tipp5::Application.routes.draw do
 
   resources :posts
 
+  resources :teams
+
   root :to => 'pages#home'
 
   match '/admin',     :to => 'pages#admin'

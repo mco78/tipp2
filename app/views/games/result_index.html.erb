@@ -13,8 +13,8 @@
 <% @games.each do |game| %>
   <tr>
     <td><%= game.kickoff.strftime("%d.%m.%y %H:%M") %></td>
-    <td><%= game.hometeam %></td>
-    <td><%= game.awayteam %></td>
+    <td><%= Team.find(game.home_team).name %></td>
+    <td><%= Team.find(game.away_team).name %></td>
     <td><%= link_to "Ergebnis eintragen", fix_result_game_path(game) %></td>
 
   </tr>

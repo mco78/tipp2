@@ -1,17 +1,17 @@
 <h1>Tipp abgeben</h1>
 
-<%= @game.hometeam %> - <%= @game.awayteam %>
+<%= Team.find(@game.home_team).name %> - <%= Team.find(@game.away_team).name %>
 
 <%= form_for(@bet) do |f| %>
 	
 	<%= f.hidden_field :game_id, :value => @game.id %>
 
-	<div> <%= @game.hometeam %>  
+	<div> <%= Team.find(@game.home_team).name %>
 		<span class="field">
 			<%= f.number_field :home_bet %> 
 		</span>
 	</div>
-	<div> <%= @game.awayteam %>  
+	<div> <%= Team.find(@game.away_team).name %> 
 		<span class="field"> 
 			<%= f.number_field :away_bet %> 
 		</span>

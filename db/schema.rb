@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329190613) do
+ActiveRecord::Schema.define(:version => 20120409195233) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(:version => 20120329190613) do
 
   create_table "games", :force => true do |t|
     t.datetime "kickoff"
-    t.string   "hometeam"
-    t.string   "awayteam"
-    t.integer  "homescore"
-    t.integer  "awayscore"
+    t.integer  "home_score"
+    t.integer  "away_score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "round_id"
+    t.integer  "home_team"
+    t.integer  "away_team"
   end
 
   create_table "posts", :force => true do |t|
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20120329190613) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cup_id"
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.string   "acronym"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

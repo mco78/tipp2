@@ -48,4 +48,8 @@ class CupsController < ApplicationController
 		redirect_to :back
 		#hier muessten eigentlich auch alle zugehörige runden und games gelöscht werden
 	end
+
+	def choose_teams
+		@cup = Cup.find(params[:id])
+	end
 end

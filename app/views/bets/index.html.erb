@@ -1,4 +1,4 @@
-<h1>Tippuebersicht</h1>
+<h1>Tippübersicht</h1>
 
 <table class="table table-striped table-condensed">
 	<tr>
@@ -10,12 +10,12 @@
 	</tr>
 	<% @game_bets.each do |game, bets| %>
 		<tr>
-			<td><%= game.hometeam %> - <%= game.awayteam %></td>
+			<td><%= Team.find(game.home_team).name %> - <%= Team.find(game.away_team).name %></td>
 			<td>
-				<% if game.awayscore.nil? %>
+				<% if game.away_score.nil? %>
 					-:-
 				<% else %>
-					<%= game.homescore %> : <%= game.awayscore %>
+					<%= game.home_score %> : <%= game.away_score %>
 				<% end -%>
 			</td>
 			<% @users.each do |user| %>

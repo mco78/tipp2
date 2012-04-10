@@ -1,0 +1,28 @@
+<h3>Teams bearbeiten</h3>
+
+<table class="table table-striped table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Abkürzung</th>
+    <th>Wettbewerbe <!-- fehlt noch --></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= team.name %></td>
+    <td><%= team.acronym %></td>
+    <td><!-- fehlt noch --></td>
+    <td><%= link_to 'Show', team %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><%= link_to 'Destroy', team, :confirm => 'Sicher?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Neues Team', new_team_path %> <br />
+<%= link_to 'Zurück zur Admin Übersicht', admin_path %>

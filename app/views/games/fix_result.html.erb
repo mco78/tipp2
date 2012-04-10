@@ -14,15 +14,15 @@
   <% end %>
 
   <div class="fixture">
-  	<%= @game.hometeam %> : <%= @game.awayteam %>
+  	<%= Team.find(@game.home_team).name %> : <%= Team.find(@game.away_team).name %>
 
    <div class="field">
-    <%= f.label :homescore %><br />
-    <%= f.number_field :homescore %>
+    <%= f.label :home_score %><br />
+    <%= f.number_field :home_score %>
   </div>
   <div class="field">
-    <%= f.label :awayscore %><br />
-    <%= f.number_field :awayscore %>
+    <%= f.label :away_score %><br />
+    <%= f.number_field :away_score %>
   </div>
 
   <div class="actions">

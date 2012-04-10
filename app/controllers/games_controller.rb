@@ -31,6 +31,7 @@ class GamesController < ApplicationController
 		@cup = Cup.find(params[:cup_id])
 		@round = Round.find(params[:round_id])
 		@game = Game.new
+		@teams = Team.all
 	end
 
 	def edit
@@ -38,6 +39,7 @@ class GamesController < ApplicationController
 		@game = Game.find(params[:id])
 		@round = Round.find(@game.round_id)
 		@cup = Cup.find(@round.cup_id)
+		@teams = Team.all
 	end
 
 	def create
@@ -72,7 +74,7 @@ class GamesController < ApplicationController
 
 	def result_index
 		@title = "Ergebnisse eintragen"
-		@games = Game.where( :homescore => nil).order(:kickoff)
+		@games = Game.where( :home_score => nil).order(:kickoff)
 	end
 
 	def fix_result
@@ -88,12 +90,12 @@ class GamesController < ApplicationController
 			flash[:success] = "Ergebnis eingetragen."
 			# do some point-updating here
 			@bets.each do |bet|
-				p = points_per_game(@game.homescore, @game.awayscore, bet.home_bet, bet.away_bet)
+				p = points_per_game(@game.home_score, @game.away_score, bet.home_bet, bet.away_bet)
 				bet.points = p
 				bet.save
 				flash[:success] = "Punkte verteilt."
 			end
-			head = "#{@game.hometeam} - #{@game.awayteam} #{@game.homescore}:#{@game.awayscore}"
+			head = "#{Team.find(@game.home_team).name} - #{Team.find(@game.away_team).name} #{@game.home_score}:#{@game.away_score}"
 			Post.create(:headline => head, :category => 'System', :content => '[System: Punkte verteilt.]')
 			redirect_to result_index_games_path
 		else

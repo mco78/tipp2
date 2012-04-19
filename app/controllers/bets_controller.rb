@@ -6,8 +6,32 @@ class BetsController < ApplicationController
 	def abgabe
 		@title = "Tippabgabe"
 		@user = current_user
-		@games = Game.all
 		@bets = @user.bets
+
+		if params[:cup_id].nil?
+			@cup = Cup.last
+		else
+			@cup = Cup.find(params[:cup_id])
+		end
+
+		if params[:round_id].nil?
+			@round = get_current_round
+			@games = Game.where(:round_id => @round.id)
+		else
+			@round = Round.find(params[:round_id])
+			@games = Game.where(:round_id => params[:round_id])
+		end
+
+		# warum funktioniert diese Version nicht?
+		# unless Round.where(:cup_id => @round.cup_id, :leg => @round.leg+1).nil?
+		# 	@nextround = Round.where(:cup_id => @round.cup_id, :leg => @round.leg+1)
+		# end
+
+		# unless Round.where(:cup_id => @round.cup_id, :leg => @round.leg-1).nil?
+		# 	@previousround = Round.where(:cup_id => @round.cup_id, :leg => @round.leg-1)
+		# end
+
+
 	end
 
 	def index
@@ -66,6 +90,19 @@ class BetsController < ApplicationController
 		Bet.find(params[:id]).destroy
 		flash[:success] = "Tipp gelöscht."
 		redirect_to :back
+	end
+
+	private
+
+	def get_current_round
+	 	@upcoming = Game.find(	:all, :conditions => ["kickoff > ?", Time.now],
+	 							:order => 'kickoff ASC')
+	 	if @upcoming.count == 0
+	 		last_game = Game.last
+	 		return Round.find(last_game.round_id)
+	 	end
+
+	 	return Round.find(@upcoming.first.round_id)
 	end
 
 end

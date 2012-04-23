@@ -22,6 +22,8 @@ class BetsController < ApplicationController
 			@games = Game.where(:round_id => params[:round_id])
 		end
 
+		@bet = Bet.new
+
 		# warum funktioniert diese Version nicht?
 		# unless Round.where(:cup_id => @round.cup_id, :leg => @round.leg+1).nil?
 		# 	@nextround = Round.where(:cup_id => @round.cup_id, :leg => @round.leg+1)
@@ -56,7 +58,7 @@ class BetsController < ApplicationController
 		@bet = current_user.bets.build(params[:bet])
 
 		if @bet.save
-			redirect_to abgabe_path
+			redirect_to :back
 			flash[:success] = "Tipp abgegeben."
 		else
 			flash[:error] = "Fehler!"
@@ -79,7 +81,7 @@ class BetsController < ApplicationController
 
 		if @bet.update_attributes(params[:bet])
 			flash[:success] = "Tipp geändert."
-			redirect_to abgabe_path
+			redirect_to :back
 		else
 			flash[:error] = "Fehler!"
 			redirect_to :back

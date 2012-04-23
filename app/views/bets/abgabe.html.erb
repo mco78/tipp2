@@ -59,15 +59,42 @@
 							- : -
 						<% end %>
 					<% else %>
+						
+						<!-- hier wird Form eingefügt -->
 						<% if @bets.exists?(:game_id => game.id) %>
-							<%= bet.home_bet %> : <%= bet.away_bet %>
-							<% if game.home_score.nil? %>
-								 | <%= link_to 'ändern', edit_bet_path(bet, :game_id => game.id) %> | 
-								<%= link_to 'löschen', bet, :method => :delete, :confirm => "sicher?" %>
-							<% end %>
+							<%= form_for(bet) do |f| %>
+		
+								<%= f.hidden_field :game_id, :value => game.id %>
+
+									<span class="field">
+										<%= f.number_field :home_bet %> 
+									</span> : 
+	 
+									<span class="field"> 
+										<%= f.number_field :away_bet %> 
+									</span>
+
+								<span class="actions">
+								    <%= f.submit %>
+								 </span>
+							<% end -%>
 						<% else %>
-						<%= link_to 'Tipp abgeben', new_bet_path(:game_id => game.id) %>
-						<% end %>
+							<%= form_for(@bet) do |f| %>
+	
+								<%= f.hidden_field :game_id, :value => game.id %>
+
+									<span class="field">
+										<%= f.number_field :home_bet %> 
+									</span> : 
+								
+									<span class="field"> 
+										<%= f.number_field :away_bet %> 
+									</span>
+								<span class="actions">
+								    <%= f.submit %>
+								 </span>
+							<% end -%>
+						<% end -%>
 					<% end %>
 				</td>
 				<td>
@@ -85,4 +112,5 @@
 		<% end %>
 		</tbody>
 	</table>
+
 <% end -%>

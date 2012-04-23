@@ -91,3 +91,11 @@
   list-style-type: none;
 }
 
+/* Abgabe-Forms */
+
+input#bet_home_bet {
+  width: 15px;
+}
+input#bet_away_bet {
+  width: 15px;
+}

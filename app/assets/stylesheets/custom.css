@@ -95,7 +95,17 @@
 
 input#bet_home_bet {
   width: 15px;
+  margin-bottom: 0px;
 }
 input#bet_away_bet {
   width: 15px;
+  margin-bottom: 0px;
+}
+
+form.new_bet {
+  margin: 0 0 0px;
+}
+
+form.edit_bet {
+  margin: 0 0 0px;
 }

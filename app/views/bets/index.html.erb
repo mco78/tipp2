@@ -1,59 +1,70 @@
 <h1>Tippübersicht</h1>
 
+<form method="get">
+	<% @cup_options = Cup.all %>
+	<%= select_tag(:cup_id, options_from_collection_for_select(@cup_options, "id", "name", selected = params[:cup_id])) %>
+	<% unless params[:cup_id].nil? %>
+			<% @options = Round.where(:cup_id => params[:cup_id]) %>
+			<%= select_tag(:round_id, options_from_collection_for_select(@options, "id", "name", selected = params[:round_id])) %>
+	<% end -%>
+	<input type="submit" value="Filter" %>
+</form>
+
 <table class="table table-striped table-condensed">
 	<tr>
-		<th>Spiel</th>
-		<th>Ergebnis</th>
-		<% @users.each do |user| %>
-			<th><%= user.email %></th>
-		<% end -%>
+		<th>User</th>
+		<th>Punkte</th>
+		<% @games.each do |game| %>
+			<th><%= Team.find(game.home_team).acronym %> <br>-<br> <%= Team.find(game.away_team).acronym %></th>
+		<% end %>
 	</tr>
-	<% @game_bets.each do |game, bets| %>
-		<tr>
-			<td><%= Team.find(game.home_team).name %> - <%= Team.find(game.away_team).name %></td>
-			<td>
-				<% if game.away_score.nil? %>
-					-:-
+	<tr>
+		<td></td>
+		<td></td>
+		<% @games.each do |game| %>
+			<td><b>
+				<% if game.home_score.nil? %>
+					 - : -
 				<% else %>
 					<%= game.home_score %> : <%= game.away_score %>
-				<% end -%>
+				<% end %>
+			</b></td>
+		<% end %>
+	</tr>
+
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.email %></td>
+			<td>
+				<%= sum_points(user, @game_bets) %>
 			</td>
-			<% @users.each do |user| %>
+			<% @game_bets.each do |game, bets| %>
 				<% if user == current_user %>
 					<% if bets.has_key?(user) %>
 						<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 						<% unless bets[user].points.nil? %>
 							 | <b><%= bets[user].points %></b>
-						<% end -%>
+						<% end %>
 						</td>
 					<% else %>
 						<td> </td>
-					<% end -%>
+					<% end %>
 				<% else %>
 					<% if Time.now >= game.kickoff %>
 						<% if bets.has_key?(user) %>
 							<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 							<% unless bets[user].points.nil? %>
-								 | <b><%= bets[user].points %></b>
-							<% end -%>
+							 | <b><%= bets[user].points %></b>
+							<% end %>
 							</td>
 						<% else %>
 							<td> </td>
-						<% end -%>
+						<% end %>
 					<% else %>
-						<td>-:-</td>
-					<% end -%>
-				<% end -%>
-			<% end -%>
+						<td>- : -</td>
+					<% end %>
+				<% end %>
+			<% end %>
 		</tr>
-	<% end -%>
-	<tr>
-		<td></td>
-		<td><b>Punkte:</b></td>
-		
-		<% @users.each do |user| %>
-			<td>
-			<b><%= sum_points(user) %></b>
-			</td>
-		<% end -%>
+	<% end %>
 </table>

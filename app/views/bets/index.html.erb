@@ -1,70 +1,78 @@
 <h1>Tippübersicht</h1>
 
 <form method="get">
-	<% @cup_options = Cup.all %>
-	<%= select_tag(:cup_id, options_from_collection_for_select(@cup_options, "id", "name", selected = params[:cup_id])) %>
-	<% unless params[:cup_id].nil? %>
-			<% @options = Round.where(:cup_id => params[:cup_id]) %>
-			<%= select_tag(:round_id, options_from_collection_for_select(@options, "id", "name", selected = params[:round_id])) %>
-	<% end -%>
-	<input type="submit" value="Filter" %>
-</form>
+		<%= select_tag(:cup_id, options_from_collection_for_select(@cup_options, "id", "name", selected = @cup.id)) %>
+		<%= select_tag(:round_id, options_from_collection_for_select(@round_options, "id", "name", selected = @round.id)) %>
+		<input type="submit" value="Filter" %>
+	</form>
 
-<table class="table table-striped table-condensed">
-	<tr>
-		<th>User</th>
-		<th>Punkte</th>
-		<% @games.each do |game| %>
-			<th><%= Team.find(game.home_team).acronym %> <br>-<br> <%= Team.find(game.away_team).acronym %></th>
-		<% end %>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<% @games.each do |game| %>
-			<td><b>
-				<% if game.home_score.nil? %>
-					 - : -
-				<% else %>
-					<%= game.home_score %> : <%= game.away_score %>
-				<% end %>
-			</b></td>
-		<% end %>
-	</tr>
+<% unless @cup.nil? %>
+	<div class="change_round">
+		<% unless @previousround.nil? %>
+			<%= link_to 'vorheriger Spieltag', bets_path(:round_id => @previousround.id) %>
+		<% end -%>
+		<% unless @nextround.nil? %>
+			<%= link_to 'nächster Spieltag', bets_path(:round_id => @nextround.id) %>
+		<% end -%>
+	</div>
 
-	<% @users.each do |user| %>
+
+	<table class="table table-striped table-condensed">
 		<tr>
-			<td><%= user.email %></td>
-			<td>
-				<%= sum_points(user, @game_bets) %>
-			</td>
-			<% @game_bets.each do |game, bets| %>
-				<% if user == current_user %>
-					<% if bets.has_key?(user) %>
-						<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
-						<% unless bets[user].points.nil? %>
-							 | <b><%= bets[user].points %></b>
-						<% end %>
-						</td>
+			<th>User</th>
+			<th>Punkte</th>
+			<% @games.each do |game| %>
+				<th><%= Team.find(game.home_team).acronym %> <br>-<br> <%= Team.find(game.away_team).acronym %></th>
+			<% end %>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<% @games.each do |game| %>
+				<td><b>
+					<% if game.home_score.nil? %>
+						 - : -
 					<% else %>
-						<td> </td>
+						<%= game.home_score %> : <%= game.away_score %>
 					<% end %>
-				<% else %>
-					<% if Time.now >= game.kickoff %>
+				</b></td>
+			<% end %>
+		</tr>
+
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.email %></td>
+				<td>						
+					<%= sum_points(user, @games) %>
+				</td>
+				<% @game_bets.each do |game, bets| %>
+					<% if user == current_user %>
 						<% if bets.has_key?(user) %>
 							<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 							<% unless bets[user].points.nil? %>
-							 | <b><%= bets[user].points %></b>
+								 | <b><%= bets[user].points %></b>
 							<% end %>
 							</td>
 						<% else %>
 							<td> </td>
 						<% end %>
 					<% else %>
-						<td>- : -</td>
+						<% if Time.now >= game.kickoff %>
+							<% if bets.has_key?(user) %>
+								<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
+								<% unless bets[user].points.nil? %>
+								 | <b><%= bets[user].points %></b>
+								<% end %>
+								</td>
+							<% else %>
+								<td> </td>
+							<% end %>
+						<% else %>
+							<td>- : -</td>
+						<% end %>
 					<% end %>
 				<% end %>
-			<% end %>
-		</tr>
-	<% end %>
-</table>
+			</tr>
+		<% end %>
+	</table>
+<% end %>

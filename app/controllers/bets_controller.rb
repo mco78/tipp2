@@ -31,7 +31,6 @@ class BetsController < ApplicationController
 		@cup_options = Cup.all
 		@round_options = @cup.rounds
 		@games = @round.games
-		# @game_bets = @games.map { |game| [game, game.bets.index_by(&:user)] }
 		@bet = Bet.new
 
 		if Round.where(:leg => @round.leg+1).nil?
@@ -67,12 +66,34 @@ class BetsController < ApplicationController
 			if params[:round_id].nil?
 				@round = get_current_cup_round
 			else
-				@round = @round = Round.find(params[:round_id])
+				if Round.find(params[:round_id]).cup_id != @cup.id
+					@round = get_current_cup_round
+				else
+					@round = @round = Round.find(params[:round_id])
+				end
 			end
 		end
 
+		@cup_options = Cup.all
+		@round_options = @cup.rounds
 		@games = @round.games
 		@game_bets = @games.map { |game| [game, game.bets.index_by(&:user)] }
+
+		if Round.where(:leg => @round.leg+1).nil?
+			@nextround = nil
+		else
+			@cuprounds = @cup.rounds
+			nextleg = @round.leg+1
+			@nextround = @cuprounds.where(:leg => nextleg).first
+		end
+
+		if Round.where(:leg => @round.leg-1).nil?
+			@previousround = nil
+		else
+			@cuprounds = @cup.rounds
+			previousleg = @round.leg-1
+			@previousround = @cuprounds.where(:leg => previousleg).first
+		end
 	end
 
 	def new

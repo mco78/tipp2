@@ -33,6 +33,7 @@ Tipp5::Application.routes.draw do
   match '/userpage',  :to => 'pages#userpage'
   match '/adminpage', :to => 'pages#adminpage'
   match '/about',     :to => 'pages#about'
+  match '/rules',     :to => 'pages#rules'
   match '/impressum', :to => 'pages#impressum'
   
   match '/abgabe',    :to => 'bets#abgabe'

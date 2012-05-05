@@ -22,7 +22,7 @@
 		<p></p>
 		<% @posts.each do |post| %>
 			<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
-			<h3><%= post.headline %></h3>
+			<h4><%= post.headline %></h4>
 			<p><%= truncate(post.content, :length => 120, :separator => ' ') %>
 				<% if post.content.length > 120 %>
 					<%= link_to "mehr", post %>

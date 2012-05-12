@@ -96,6 +96,23 @@ class BetsController < ApplicationController
 		end
 	end
 
+	def ranking
+		@title = "Ranking"
+
+		@cup_options = Cup.all
+		if params[:cup_id].nil?
+			current_round = get_current_round
+			@cup = Cup.find(current_round.cup_id)
+		else
+			@cup = Cup.find(params[:cup_id])
+		end
+
+		@rounds = @cup.rounds.order('leg ASC')
+		#hier active_rounds filtern -> runden in denen schon punkte verteilt wurden
+		@users = User.all
+		@rankingusers = get_ranking(@users, @cup)
+	end
+
 	def new
 		@title = "Tipp abgeben"
 		@bet = Bet.new
@@ -148,7 +165,6 @@ class BetsController < ApplicationController
 		redirect_to :back
 	end
 
-	
 
 	private
 
@@ -175,4 +191,28 @@ class BetsController < ApplicationController
 		end
 	end
 
+	def get_ranking(users, cup)
+		userranking = Hash.new {|h,k| h[k] = []}
+		users.each do |user|
+			cup_points = 0
+			rounds = cup.rounds
+			rounds.each do |round|
+				unless round.nil?
+					round_points = 0
+					bets = round.bets.where(:user_id => user.id)
+					bets.each do |bet|
+						unless bet.nil?
+							unless bet.points.nil?
+								round_points = round_points ++ bet.points
+							end
+						end
+					end
+					cup_points = cup_points ++ round_points
+				end
+			end
+			userranking[user.id] << cup_points
+		end
+		userranking.sort_by {|key, value| value}.reverse
+		return userranking
+	end
 end

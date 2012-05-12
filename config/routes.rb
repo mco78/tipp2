@@ -38,6 +38,7 @@ Tipp5::Application.routes.draw do
   
   match '/abgabe',    :to => 'bets#abgabe'
   match '/uebersicht', :to => 'bets#index'
+  match '/ranking',   :to => 'bets#ranking'
 
   match '/news',      :to => 'posts#news'
 

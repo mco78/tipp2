@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -8,21 +9,21 @@
 
 Bet.delete_all
 
-Game.delete_all
-
-Round.delete_all
-
 Cup.delete_all
+
+Game.delete_all
 
 Post.delete_all
 
+Round.delete_all
+
 Team.delete_all
 
-cup1 = Cup.create(:name => "EM2012")
+User.delete_all
 
-round1 = Round.create(	:name 	=> "Vorrunde, 1. Spt.",
-						:leg 	=> 1,
-						:cup_id => cup1.id)
+cup1 = Cup.create( :name => "EM2012" )
+
+round1 = Round.create(	:name 	=> "Vorrunde, 1. Spt.", :leg 	=> 1, :cup_id => cup1.id)
 
 round2 = Round.create(	:name 	=> "Vorrunde, 2. Spt.",
 						:leg 	=> 2,
@@ -80,184 +81,887 @@ team15 = Team.create(	:name 	=> "Ukraine",
 team16 = Team.create(	:name 	=> "Schweden",
 						:acronym => "SWE")
 
-Game.create(:round_id => round1.id,
-			:kickoff => "04/16/2012 18:00",
+game1 = Game.create(:round_id => round1.id,
+			:kickoff => "11/05/2012 18:00",
 			:home_team => team1.id,
 			:away_team => team2.id
 			)
 
-Game.create(:round_id => round1.id,
-			:kickoff => "04/16/2012 20:45",
+game2 = Game.create(:round_id => round1.id,
+			:kickoff => "11/05/2012 20:45",
 			:home_team => team3.id,
 			:away_team => team4.id
 			)
 
-Game.create(:round_id => round1.id,
-			:kickoff => "04/16/2012 18:00",
+game3 = Game.create(:round_id => round1.id,
+			:kickoff => "11/05/2012 18:00",
 			:home_team => team5.id,
 			:away_team => team6.id
 			)
 
-Game.create(
+game4 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "04/16/2012 20:45",
+			:kickoff => "11/05/2012 20:45",
 			:home_team => team7.id,
 			:away_team => team8.id
 			)
 
-Game.create(
+game5 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "04/16/2012 18:00",
+			:kickoff => "11/05/2012 18:00",
 			:home_team => team9.id,
 			:away_team => team10.id
 			)
 
-Game.create(
+game6 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "04/16/2012 21:45",
+			:kickoff => "11/05/2012 21:45",
 			:home_team => team11.id,
 			:away_team => team12.id
 			)
 
-Game.create(
+game7 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "04/16/2012 18:00",
+			:kickoff => "11/05/2012 18:00",
 			:home_team => team13.id,
 			:away_team => team14.id
 			)
 
-Game.create(
+game8 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "04/16/2012 20:45",
+			:kickoff => "11/05/2012 20:45",
 			:home_team => team15.id,
 			:away_team => team16.id
 			)
 
-Game.create(
+game9 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 18:00",
+			:kickoff => "12/05/2012 18:00",
 			:home_team => team2.id,
 			:away_team => team4.id
 			)
 
-Game.create(
+game10 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 20:45",
+			:kickoff => "12/05/2012 20:45",
 			:home_team => team1.id,
 			:away_team => team3.id
 			)
 
-Game.create(
+game11 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 18:00",
+			:kickoff => "12/05/2012 18:00",
 			:home_team => team6.id,
 			:away_team => team8.id
 			)
 
-Game.create(
+game12 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 20:45",
+			:kickoff => "12/05/2012 20:45",
 			:home_team => team5.id,
 			:away_team => team7.id
 			)
 
-Game.create(
+game13 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 18:00",
+			:kickoff => "12/05/2012 18:00",
 			:home_team => team10.id,
 			:away_team => team12.id
 			)
 
-Game.create(
+game14 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 20:45",
+			:kickoff => "12/05/2012 20:45",
 			:home_team => team9.id,
 			:away_team => team11.id
 			)
 
-Game.create(
+game15 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 18:00",
+			:kickoff => "12/05/2012 18:00",
 			:home_team => team15.id,
 			:away_team => team13.id
 			)
 
-Game.create(
+game16 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "04/18/2012 20:45",
+			:kickoff => "12/05/2012 20:45",
 			:home_team => team16.id,
 			:away_team => team14.id
 			)
 
-Game.create(
+game17 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team4.id,
 			:away_team => team1.id
 			)
 
-Game.create(
+game18 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team2.id,
 			:away_team => team3.id
 			)
 
-Game.create(
+game19 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team8.id,
 			:away_team => team5.id
 			)
 
-Game.create(
+game20 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team6.id,
 			:away_team => team7.id
 			)
 
 
-Game.create(
+game21 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team12.id,
 			:away_team => team9.id
 			)
 
-Game.create(
+game22 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team10.id,
 			:away_team => team11.id
 			)
 
-Game.create(
+game23 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team14.id,
 			:away_team => team15.id
 			)
 
-Game.create(
+game24 = Game.create(
 			:round_id => round3.id,
-			:kickoff => "04/19/2012 20:45",
+			:kickoff => "15/05/2012 20:45",
 			:home_team => team16.id,
 			:away_team => team13.id
 			)
 
-cup2 = Cup.create(:name => "Bundesliga 2011/2012")
+user1 = User.create( 	:username => "test",
+						:email => "test@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
 
-round4 = Round.create(	:name => "32. Spieltag",
-						:leg => 32,
+user2 = User.create( 	:username => "test2",
+						:email => "test2@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user3 = User.create( 	:username => "test3",
+						:email => "test3@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user4 = User.create( 	:username => "test4",
+						:email => "test4@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user5 = User.create( 	:username => "test5",
+						:email => "test5@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user6 = User.create( 	:username => "test6",
+						:email => "test6@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user7 = User.create( 	:username => "test7",
+						:email => "test7@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+bet1 = Bet.create(		:game_id => game1.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet2 = Bet.create(		:game_id => game1.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet3 = Bet.create(		:game_id => game1.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet4 = Bet.create(		:game_id => game1.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet5 = Bet.create(		:game_id => game1.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet6 = Bet.create(		:game_id => game1.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet7 = Bet.create(		:game_id => game1.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet8 = Bet.create(		:game_id => game2.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet9 = Bet.create(		:game_id => game2.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet10 = Bet.create(		:game_id => game2.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet11 = Bet.create(		:game_id => game2.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet12 = Bet.create(		:game_id => game2.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet13 = Bet.create(		:game_id => game2.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet14 = Bet.create(		:game_id => game2.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet15 = Bet.create(		:game_id => game3.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet16 = Bet.create(		:game_id => game3.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet17 = Bet.create(		:game_id => game3.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet18 = Bet.create(		:game_id => game3.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet19 = Bet.create(		:game_id => game3.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet20 = Bet.create(		:game_id => game3.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet21 = Bet.create(		:game_id => game3.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+cup2 = Cup.create(:name => "Bundesliga 2012/2013")
+
+round4 = Round.create(	:name => "01. Spieltag",
+						:leg => 1,
 						:cup_id => cup2.id)
 
-round5 = Round.create(	:name => "33. Spieltag",
-						:leg => 33,
-						:cup_id => cup2.id)
-
-round6 = Round.create(	:name => "34. Spieltag",
-						:leg => 34,
+round5 = Round.create(	:name => "02. Spieltag",
+						:leg => 2,
 						:cup_id => cup2.id)
 
 team17 = Team.create(	:name => "1. FSV Mainz 05",
@@ -316,126 +1020,126 @@ team34 = Team.create(	:name => "SC Freiburg",
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/20/2012 20:30",
+			:kickoff => "20/08/2012 20:30",
 			:home_team => team17.id,
 			:away_team => team18.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 15:30",
+			:kickoff => "21/08/2012 15:30",
 			:home_team => team19.id,
 			:away_team => team20.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 15:30",
+			:kickoff => "21/08/2012 15:30",
 			:home_team => team21.id,
 			:away_team => team22.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 15:30",
+			:kickoff => "21/08/2012 15:30",
 			:home_team => team23.id,
 			:away_team => team24.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 15:30",
+			:kickoff => "21/08/2012 15:30",
 			:home_team => team25.id,
 			:away_team => team26.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 15:30",
+			:kickoff => "21/08/2012 15:30",
 			:home_team => team27.id,
 			:away_team => team28.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/21/2012 18:30",
+			:kickoff => "21/08/2012 18:30",
 			:home_team => team29.id,
 			:away_team => team30.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/22/2012 15:30",
+			:kickoff => "22/08/2012 15:30",
 			:home_team => team31.id,
 			:away_team => team32.id
 			)
 
 Game.create(
 			:round_id => round4.id,
-			:kickoff => "04/22/2012 17:30",
+			:kickoff => "22/08/2012 17:30",
 			:home_team => team33.id,
 			:away_team => team34.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team26.id,
 			:away_team => team29.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team18.id,
 			:away_team => team21.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team20.id,
 			:away_team => team33.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team24.id,
 			:away_team => team17.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team19.id,
 			:away_team => team23.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team22.id,
 			:away_team => team28.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team34.id,
 			:away_team => team27.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team30.id,
 			:away_team => team31.id
 			)
 
 Game.create(
 			:round_id => round5.id,
-			:kickoff => "04/28/2012 15:30",
+			:kickoff => "28/08/2012 15:30",
 			:home_team => team32.id,
 			:away_team => team25.id
 			)

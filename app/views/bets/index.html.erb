@@ -41,7 +41,7 @@
 
 		<% @users.each do |user| %>
 			<tr>
-				<td><%= user.email %></td>
+				<td><%= user.username %></td>
 				<td>						
 					<%= sum_points(user, @games) %>
 				</td>
@@ -68,7 +68,11 @@
 								<td> </td>
 							<% end %>
 						<% else %>
-							<td>- : -</td>
+							<% if bets.has_key?(user) %>
+								<td>- : -</td>
+							<% else %>
+								<td></td>
+							<% end %>
 						<% end %>
 					<% end %>
 				<% end %>

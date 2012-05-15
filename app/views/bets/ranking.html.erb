@@ -16,10 +16,18 @@
 	<tr>
 	<% @rankingusers.sort_by {|key, value| value}.reverse.each do |user_id, cup_points| %>
 		<% user = User.find(user_id) %>
-		<td><%= user.username %></td>
-		<td><%= cup_points %></td>
-		<% @rounds.each do |round| %>
-			<td><%= get_round_points(user, round)%></td>
+		<% if user == current_user %>
+			<td><b><%= user.username %></b></td>
+			<td><b><%= "#{cup_points}" %></b></td>
+			<% @rounds.each do |round| %>
+				<td><b><%= get_round_points(user, round)%></b></td>
+			<% end %>
+		<% else %>
+			<td><%= user.username %></td>
+			<td><%= "#{cup_points}" %></td>
+			<% @rounds.each do |round| %>
+				<td><%= get_round_points(user, round)%></td>
+			<% end %>
 		<% end %>
 		</tr>
 	<% end %>

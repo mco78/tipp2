@@ -212,7 +212,6 @@ class BetsController < ApplicationController
 			end
 			userranking[user.id] << cup_points
 		end
-		userranking.sort_by {|key, value| value}.reverse
 		return userranking
 	end
 end

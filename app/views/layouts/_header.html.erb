@@ -1,4 +1,8 @@
 <div id="header">
+  <div id="logo">
+    <% logo = image_tag("tipp2_logo_col.gif", :alt => "tipp2") %>
+    <%= link_to logo, root_path %>
+  </div>
   <div id="head_right">
     <div id="session_info">
       <% if user_signed_in? %>
@@ -19,12 +23,13 @@
       <%= Time.now.strftime("%d.%m.%y %H:%M") %> 
     </div>
   </div>
-
-  <ul id="nav">
-    <li id="li_home"><%= link_to "Home", root_path %></li>
-    <li id="li_abgabe"><%= link_to "Tippabgabe", abgabe_path %></li>
-    <li id="li_uebersicht"><%= link_to "Tippübersicht", uebersicht_path %></li>
-    <li id="li_uebersicht"><%= link_to "Spielstand", ranking_path %></li>
-  </ul>
+  <div id="navigation">
+    <ul id="nav">
+      <li id="li_home"><%= link_to "Home", root_path %></li>
+      <li id="li_abgabe"><%= link_to "Tippabgabe", abgabe_path %></li>
+      <li id="li_uebersicht"><%= link_to "Tippübersicht", uebersicht_path %></li>
+      <li id="li_uebersicht"><%= link_to "Spielstand", ranking_path %></li>
+    </ul>
+  </div>
     
 </div>

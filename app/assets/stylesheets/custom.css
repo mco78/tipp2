@@ -3,7 +3,11 @@
 #header {
   background-color: #F1F1F1;
   overflow: hidden;
-  height: 70px;
+  height: 150px;
+}
+
+#logo {
+  float: left;
 }
 
 /* Head Right */
@@ -31,25 +35,26 @@
 
 /* Navigation */
 
-#container ul#nav {
-  overflow: hidden;
-  float: left;
-  height: 100px;
-  margin: 0;
+#navigation {
+  margin-top: 120px;
+}
+
+#nav ul {
+
 }
 
 #nav li {
   float: left;
   font-size: 120%;
   font-weight: bold;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   list-style-type: none;
 }
 
 #nav li a {
   margin-top: 50px;
   line-height: 20px;
-  display: block;
   text-transform: uppercase;
   text-align: center;
 }

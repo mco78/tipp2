@@ -85,7 +85,7 @@
 #footer {
   background-color: #F1F1F1;
   overflow: hidden;
-  height: 40px;
+  height: 60px;
   margin-top: 20px;
 }
 
@@ -95,9 +95,23 @@
 
 #footer_nav li {
   float: left;
+  font-size: 120%;
+  text-transform: uppercase;
   margin-top: 10px;
   margin-right: 20px;
   list-style-type: none;
+}
+
+#footer_version p {
+  float:right;
+  font-size: 80%;
+  margin-right: 10px;
+
+}
+
+#footer_logo img {
+  float: right;
+  margin-right: 10px;
 }
 
 /* Abgabe-Forms */

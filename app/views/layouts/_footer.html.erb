@@ -1,7 +1,22 @@
  <div id="footer">
 	<ul id="footer_nav">
-		<li id="li_footer_nav"><%= link_to "Über das Projekt", about_path %></li>
+		<li id="li_footer_nav"><a target="_blank" href="http://blog.tipp2.net/">Blog</a></li>
+		<li id="li_footer_nav"><%= link_to "About", about_path %></li>
 		<li id="li_footer_nav"><%= link_to "Spielregeln", rules_path %></li>
 		<li id="li_footer_nav"><%= link_to "Impressum", impressum_path %></li>
 	</ul>
+
+	<div id="footer_info">
+		<div id="footer_logo">
+    		<a target="_blank" href="http://22dev.de"><%= image_tag("22logo_4_tiny.png", :alt => "twentytwo develpment", :size => "120x44") %></a>
+  		</div>
+		<div id="footer_version">
+			<p>tipp2 Version 0.3 BETA by</p>
+		</div>
+	</div>
+
+
+	
+
+	
 </div>

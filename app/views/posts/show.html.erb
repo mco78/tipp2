@@ -1,17 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @post.headline %></h2>
+<div class="row">
+	<div class="span8">
 
-<p>Erstellt: <%= @post.created_at.strftime("%d.%m.%y %H:%M") %> | Geändert: <%= @post.updated_at.strftime("%d.%m.%y %H:%M") %>
-</p>
+		<h2><%= @post.headline %></h2>
 
-<p><%= @post.content %></p>
+		<p>Erstellt: <%= @post.created_at.strftime("%d.%m.%y %H:%M") %> | Geändert: <%= @post.updated_at.strftime("%d.%m.%y %H:%M") %>
+		</p>
 
-<% if admin_signed_in? %>
-    <%= link_to 'Edit', edit_post_path(@post) %> |
-	<%= link_to 'Back', posts_path %>
-<% else %>
-	<b>Hier muss noch ein Link für Nicht-Admins hin...</b>
-<% end %>
+		<p><%= simple_format(@post.content) %></p>
+
+		<% if admin_signed_in? %>
+		    <%= link_to 'Edit', edit_post_path(@post) %> |
+			<%= link_to 'Back', posts_path %>
+		<% else %>
+			<b><%= link_to 'zurück', root_path %></b>
+		<% end %>
+	</div>
+	<div class="span2">
+
+	</div>
+</div>
 
 

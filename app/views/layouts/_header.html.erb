@@ -15,7 +15,7 @@
 
       <% if admin_signed_in? %>
           <br> Angemeldet als Admin <%= current_admin.email %>. Nicht du?
-          <%= link_to "abmelden", destroy_admin_session_path, :method => :delete %>
+          <%= link_to "abmelden", destroy_admin_session_path, :method => :delete %> <%= link_to 'Backend', admin_path %>
       <% end %>
     </div>
     </br>

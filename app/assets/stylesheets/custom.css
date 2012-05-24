@@ -132,3 +132,12 @@ form.new_bet {
 form.edit_bet {
   margin: 0 0 0px;
 }
+
+/* Devise Forms */
+.devise_form {
+  line-height: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+

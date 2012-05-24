@@ -7,3 +7,5 @@ My first bigger rails project. It's a betting game for football results.
 It uses Ruby on Rails with devise for authentification.
 
 The game language is german for now, localization might be implemented later.
+
+The project is online (in German) on www.tipp2.net

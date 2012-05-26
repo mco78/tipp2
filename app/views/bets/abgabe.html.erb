@@ -65,14 +65,14 @@
 									<%= f.number_field :away_bet %> 
 								</span>
 
-							    <button type="submit" class="btn btn-mini">
+							    <button type="submit" class="btn btn-mini" title="aktualisieren">
 									<i type="submit" class="icon-edit"></i>
 								</button>
 
 
 								 </span>
 								 
-								 	<%= link_to bet, :method => :delete, :confirm => "sicher?" do %>
+								 	<%= link_to bet, :method => :delete, :title => "löschen", :confirm => "sicher?" do %>
 								 		<i class="icon-remove"></i>
 								 	<% end -%>
 
@@ -89,7 +89,7 @@
 								<span class="field"> 
 									<%= f.number_field :away_bet %> 
 								</span>
-								<button type="submit" class="btn btn-mini">
+								<button type="submit" class="btn btn-mini" title="speichern">
 									<i class="icon-check"></i>
 							<% end -%>
 						<% end -%>

@@ -8,6 +8,11 @@
 	</form>
 
 <% unless @cup.nil? %>
+	
+	<div class="alert alert-info">
+		<strong>Achtung!</strong> Aus technischen Gründen muss jeder Tipp mittels <i type="submit" class="icon-check"></i> Button einzeln abgespeichert werden. In einer der nächsten Updates wird es einen einzelnen "Speichern"-Button für den ganzen Spieltag geben. Sorry... 
+	</div>
+	
 	<div class="change_round">
 		<% unless @previousround.nil? %>
 			<%= link_to 'vorheriger Spieltag', abgabe_path(:round_id => @previousround.id) %>
@@ -110,9 +115,5 @@
 		<% end %>
 		</tbody>
 	</table>
-
-	<div class="alert alert-info">
-		<strong>Achtung!</strong> Aus technischen Gründen muss jeder Tipp mittels <i type="submit" class="icon-check"></i> Button einzeln abgespeichert werden. In einer der nächsten Updates wird es einen einzelnen "Speichern"-Button für den ganzen Spieltag geben. Sorry... 
-	</div>
 
 <% end -%>

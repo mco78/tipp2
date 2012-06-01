@@ -6,15 +6,15 @@
   <div id="head_right">
     <div id="session_info">
       <% if user_signed_in? %>
-          Angemeldet als <%= current_user.email %>. Nicht du?
+          Angemeldet als <%= current_user.username %> - <%= link_to '<i class="icon-user"></i>'.html_safe, edit_user_registration_path, :title => "Profil bearbeiten" %> <%= link_to "Profil bearbeiten", edit_user_registration_path %> - 
           <%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
       <% else %>
-          <%= link_to "registrieren", new_user_registration_path %> or
+          <%= link_to "registrieren", new_user_registration_path %> oder
           <%= link_to "anmelden", new_user_session_path %>
       <% end %>
 
       <% if admin_signed_in? %>
-          <br> Angemeldet als Admin <%= current_admin.email %>. Nicht du?
+          <br> Angemeldet als Admin <%= current_admin.username %>, 
           <%= link_to "abmelden", destroy_admin_session_path, :method => :delete %> <%= link_to 'Backend', admin_path %>
       <% end %>
     </div>

@@ -5,6 +5,9 @@ de:
       not_found: "Nicht gefunden"
       already_confirmed: "ist bereits bestätigt"
       not_locked: "war nicht gesperrt"
+      not_saved:
+        one: "Ein Fehler hat das Speichern verhindert:"
+        other: "%{count} Fehler haben das Speichern verhindert:"
 
   devise:
     failure:

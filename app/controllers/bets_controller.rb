@@ -30,7 +30,7 @@ class BetsController < ApplicationController
 
 		@cup_options = Cup.all
 		@round_options = @cup.rounds
-		@games = @round.games
+		@games = @round.games.order('kickoff ASC')
 		@bet = Bet.new
 
 		if Round.where(:leg => @round.leg+1).nil?

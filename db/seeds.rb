@@ -15,6 +15,10 @@ Round.delete_all
 
 Team.delete_all
 
+User.delete_all
+
+Bet.delete_all
+
 cup1 = Cup.create( :name => "EM2012" )
 
 round1 = Round.create(	:name 	=> "Vorrunde, 1. Spt.", 
@@ -241,3 +245,711 @@ game24 = Game.create(
 			:home_team => team16.id,
 			:away_team => team13.id
 			)
+
+
+user1 = User.create( 	:username => "test",
+						:email => "test@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user2 = User.create( 	:username => "test2",
+						:email => "test2@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user3 = User.create( 	:username => "test3",
+						:email => "test3@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user4 = User.create( 	:username => "test4",
+						:email => "test4@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user5 = User.create( 	:username => "test5",
+						:email => "test5@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user6 = User.create( 	:username => "test6",
+						:email => "test6@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+user7 = User.create( 	:username => "test7",
+						:email => "test7@test.com",
+						:password => "testtest",
+						:password_confirmation => "testtest")
+
+bet1 = Bet.create(		:game_id => game1.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet2 = Bet.create(		:game_id => game1.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet3 = Bet.create(		:game_id => game1.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet4 = Bet.create(		:game_id => game1.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet5 = Bet.create(		:game_id => game1.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet6 = Bet.create(		:game_id => game1.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet7 = Bet.create(		:game_id => game1.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet8 = Bet.create(		:game_id => game2.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet9 = Bet.create(		:game_id => game2.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet10 = Bet.create(		:game_id => game2.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet11 = Bet.create(		:game_id => game2.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet12 = Bet.create(		:game_id => game2.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet13 = Bet.create(		:game_id => game2.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet14 = Bet.create(		:game_id => game2.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet15 = Bet.create(		:game_id => game3.id,
+						:user_id => user1.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet16 = Bet.create(		:game_id => game3.id,
+						:user_id => user2.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet17 = Bet.create(		:game_id => game3.id,
+						:user_id => user3.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet18 = Bet.create(		:game_id => game3.id,
+						:user_id => user4.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet19 = Bet.create(		:game_id => game3.id,
+						:user_id => user5.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet20 = Bet.create(		:game_id => game3.id,
+						:user_id => user6.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+bet21 = Bet.create(		:game_id => game3.id,
+						:user_id => user7.id,
+						:home_bet => rand(4),
+						:away_bet => rand(4)
+						)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game4.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game5.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game6.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game7.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game8.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game9.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game10.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game11.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game12.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game13.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game14.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game15.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user1.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user2.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+					)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user3.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user4.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user5.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user6.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)
+
+Bet.create(		:game_id => game16.id,
+				:user_id => user7.id,
+				:home_bet => rand(4),
+				:away_bet => rand(4)
+				)

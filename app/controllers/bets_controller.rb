@@ -76,7 +76,7 @@ class BetsController < ApplicationController
 
 		@cup_options = Cup.all
 		@round_options = @cup.rounds
-		@games = @round.games
+		@games = @round.games.order('kickoff ASC')
 		@game_bets = @games.map { |game| [game, game.bets.index_by(&:user)] }
 
 		if Round.where(:leg => @round.leg+1).nil?

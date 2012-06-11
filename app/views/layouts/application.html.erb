@@ -7,7 +7,9 @@
     <% end %>
   </title>
   
-      <link href="/public/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link href="/public/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
+  <%= analytics_init if Rails.env.production? %>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>

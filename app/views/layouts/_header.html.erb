@@ -6,7 +6,7 @@
   <div id="head_right">
     <div id="session_info">
       <% if user_signed_in? %>
-          Angemeldet als <%= current_user.username %> - <%= link_to '<i class="icon-user"></i>'.html_safe, edit_user_registration_path, :title => "Profil bearbeiten" %> <%= link_to "Profil bearbeiten", edit_user_registration_path %> - 
+          Angemeldet als <%= current_user.username %> - <%= link_to '<i class="icon-user"></i>'.html_safe, edit_user_registration_path, :title => "Profil bearbeiten" %> <%= active_link_to "Profil bearbeiten", edit_user_registration_path %> - 
           <%= link_to "abmelden", destroy_user_session_path, :method => :delete %>
       <% else %>
           <%= link_to "registrieren", new_user_registration_path %> oder
@@ -24,11 +24,11 @@
     </div>
   </div>
   <div id="navigation">
-    <ul id="nav">
-      <li id="li_home"><%= link_to "Home", root_path %></li>
-      <li id="li_abgabe"><%= link_to "Tippabgabe", abgabe_path %></li>
-      <li id="li_uebersicht"><%= link_to "Tippübersicht", uebersicht_path %></li>
-      <li id="li_uebersicht"><%= link_to "Spielstand", ranking_path %></li>
+    <ul>
+      <li id="li_home"><%= active_link_to "Home", root_path %></li>
+      <li id="li_abgabe"><%= active_link_to "Tippabgabe", abgabe_path %></li>
+      <li id="li_uebersicht"><%= active_link_to "Tippübersicht", uebersicht_path %></li>
+      <li id="li_uebersicht"><%= active_link_to "Spielstand", ranking_path %></li>
     </ul>
   </div>
     

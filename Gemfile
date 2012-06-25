@@ -5,6 +5,7 @@ gem 'json'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem "devise", "2.0.0"
+gem 'active_link_to'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.5'

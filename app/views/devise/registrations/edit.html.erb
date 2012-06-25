@@ -1,28 +1,29 @@
-<h2>User Profil</h2>
+<div class="devise_form">
+  <h2>User Profil</h2>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="devise_form_field"><%= f.label :username %><br />
+    <%= f.text_field :username %></div>
 
-  <div class="devise_form"><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
+    <div class="devise_form_field"><%= f.label :email %><br />
+    <%= f.email_field :email %></div>
 
-  <div class="devise_form"><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <div class="devise_form_field"><%= f.label :password, "Neues Passwort (leer lassen, wenn du es nicht ändern willst)" %> 
+    <%= f.password_field :password %></div>
 
-  <div class="devise_form"><%= f.label :password, "Neues Passwort (leer lassen, wenn du es nicht ändern willst)" %> 
-  <%= f.password_field :password %></div>
+    <div class="devise_form_field"><%= f.label :password_confirmation, "Neues Passwort bestätigen" %><br />
+    <%= f.password_field :password_confirmation %></div>
 
-  <div class="devise_form"><%= f.label :password_confirmation, "Neues Passwort bestätigen" %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="devise_form_field"><%= f.label :current_password, "aktuelles Passwort (wir brauchen das aktuelle Passwort, um die Änderungen zu bestätigen)"%>
+    <%= f.password_field :current_password %></div>
 
-  <div class="devise_form"><%= f.label :current_password, "aktuelles Passwort (wir brauchen das aktuelle Passwort, um die Änderungen zu bestätigen)"%>
-  <%= f.password_field :current_password %></div>
+    <div><%= f.submit "Profil aktualisieren" %></div>
+  <% end %>
 
-  <div><%= f.submit "Profil aktualisieren" %></div>
-<% end %>
+  <h3>Account löschen</h3>
 
-<h3>Account löschen</h3>
+  <p>unglücklich? <%= link_to "Account löschen", registration_path(resource_name), :confirm => "Bist du sicher?", :method => :delete %>.</p>
 
-<p>unglücklich? <%= link_to "Account löschen", registration_path(resource_name), :confirm => "Bist du sicher?", :method => :delete %>.</p>
-
-<%= link_to "zurück zur Homepage", root_path %>
+  <%= link_to "zurück zur Homepage", root_path %>
+</div>

@@ -11,11 +11,11 @@ class GamesController < ApplicationController
 			next_game = Game.where("kickoff >= ?", Time.now).first
 			@round = Round.find(next_game.round_id)
 			@cup = Cup.find(@round.cup_id)
-			@games = Game.where(:round_id => next_game.round_id)
+			@games = Game.where(:round_id => next_game.round_id).order('kickoff ASC')
 		else
 			@round = Round.find(params[:round_id])
 			@cup = Cup.find(@round.cup_id)
-			@games = Game.where(:round_id => params[:round_id])
+			@games = Game.where(:round_id => params[:round_id]).order('kickoff ASC')
 		end
 	end
 

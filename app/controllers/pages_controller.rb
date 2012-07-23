@@ -10,10 +10,11 @@ class PagesController < ApplicationController
 		if user_signed_in?
 			@user = current_user
 			if @user.community_id.nil?
-				@posts = Post.where(:category => "News")
+				@posts = Post.where(:category => "News").paginate(:page => params[:page])
 			else
 				@community = Community.find(@user.community_id)
-				@posts = Post.where(:category => ["News", "com" + @community.id.to_s])
+				selected_posts = Post.where(:category => ["News", "com" + @community.id.to_s])
+				@posts = selected_posts.paginate(:page => params[:page])
 			end
 			@bets = @user.bets
 		end

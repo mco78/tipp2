@@ -52,8 +52,12 @@ class BetsController < ApplicationController
 
 	def index
 		@title = "Tippübersicht"
+		if current_user.community_id.nil?
+			@user = current_user
+		else
 		@community = Community.find(current_user.community_id)
 		@users = User.where(:community_id => @community.id)
+		end
 
 		if params[:cup_id].nil?
 			if params[:round_id].nil?
@@ -99,7 +103,9 @@ class BetsController < ApplicationController
 
 	def ranking
 		@title = "Ranking"
-		@community = Community.find(current_user.community_id)
+		unless current_user.community_id.nil?
+			@community = Community.find(current_user.community_id)
+		end
 
 		@cup_options = Cup.all
 		if params[:cup_id].nil?
@@ -111,8 +117,14 @@ class BetsController < ApplicationController
 
 		@rounds = @cup.rounds.order('leg ASC')
 		#hier active_rounds filtern -> runden in denen schon punkte verteilt wurden
-		@users = User.where(:community_id => @community.id)
-		@rankingusers = get_ranking(@users, @cup)
+		if current_user.community_id.nil?
+			@user = current_user
+			@cup_points = get_ranking_one(@user, @cup)
+		else
+			@users = User.where(:community_id => @community.id)
+			@rankingusers = get_ranking(@users, @cup)
+		end
+		
 	end
 
 	def new
@@ -216,4 +228,25 @@ class BetsController < ApplicationController
 		end
 		return userranking
 	end
+
+	def get_ranking_one(user, cup)
+		cup_points = 0
+		rounds = cup.rounds
+		rounds.each do |round|
+			unless round.nil?
+				round_points = 0
+				bets = round.bets.where(:user_id => user.id)
+				bets.each do |bet|
+					unless bet.nil?
+						unless bet.points.nil?
+							round_points = round_points ++ bet.points
+						end
+					end
+				end
+				cup_points = cup_points ++ round_points
+			end
+		end
+		return cup_points
+	end
+
 end

@@ -1,15 +1,30 @@
 <div class="main_content">
 	<h2>Community-Neuigkeiten von "<%= link_to @community.name, @community %>"</h2>
-	<!-- hier müssen später die passenden News zu der Community
-	ausgwählt werden. Die muss über den Controller geschehen. -->
 	<p></p>
+
+	<%= will_paginate @posts %>
+
+	<div class="user_post_button">
+		<%= link_to "Beitrag schreiben", new_userpost_posts_path, :class => "btn" %>
+	</div>
+
 	<% @posts.each do |post| %>
-		<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
-		<h4><%= post.headline %></h4>
-		<p><%= truncate(simple_format(post.content), :length => 500, :separator => ' ') %>
-		<% if post.content.length > 500 %>
-			<%= link_to "mehr", post %>
-		<% end %>
-		</p>
+		<div class="post_preview">
+			
+			<h4><%= post.headline %></h4>
+			<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
+			<% unless post.user_id.nil? %>
+				 | <%= User.find(post.user_id).username %> 
+			<% end %>
+			<p><%= truncate(simple_format(post.content), :length => 500, :separator => ' ') %>
+			<% if post.content.length > 500 %>
+				<%= link_to "mehr", post %>
+			<% end %></p>
+			<% if post.user_id === current_user.id %>
+				<%= link_to "Beitrag bearbeiten", edit_post_path(post) %>
+			<% end %>
+		</div>
 	<% end %>
+
+	<%= will_paginate @posts %>
 </div>

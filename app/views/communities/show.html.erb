@@ -9,7 +9,13 @@
 
 			<ul>
 				<% @members.each do |m| %>
-					<li><%= m.username %> | <a href="mailto: <%= m.email %>">E-Mail schreiben</a></li>
+					<li><%= m.username %> | <a href="mailto: <%= m.email %>">E-Mail schreiben</a>
+						<% if current_user.id === @community.admin_id %>
+								<% unless m.id === current_user.id %>
+									 | <%= link_to "Spieler aus der Community werfen",  kick_out_communities_path(:user_id =>m.id), :confirm => 'Sicher? Du solltest hierfür gute Gründe haben!' %>
+								<% end %>
+						<% end %>
+					</li>
 						<!-- hier muss später das Profil verlinkt sein -->
 				<% end %>
 			</ul>

@@ -152,4 +152,21 @@ class CommunitiesController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def kick_out
+		@community = Community.find(current_user.community_id)
+		if current_user.id === @community.admin_id
+			@user = User.find(params[:user_id])
+			@user.community_id = nil
+			@user.save
+			flash[:success] = @user.username + " aus der Community rausgeworfen!"
+			Post.create(	headline: "Mitspieler rausgeworfen", 
+							category: "com" + @community.id.to_s,
+							content: @user.username + " wurde vom Admin aus der Community geworfen.")
+			redirect_to @community
+		else
+			flash[:error] = "Du hast nicht die Rechte, jemanden aus der Community zu werfen!"
+			redirect_to @community
+		end
+	end
 end

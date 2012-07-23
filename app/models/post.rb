@@ -7,4 +7,6 @@ class Post < ActiveRecord::Base
 
 	default_scope :order => 'created_at DESC'
 	scope :news, where(:category => 'News')
+
+	self.per_page = 8
 end

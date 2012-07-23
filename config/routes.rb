@@ -23,11 +23,20 @@ Tipp5::Application.routes.draw do
   
   resources :bets
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :new_userpost
+    end
+  end
 
   resources :teams
 
-  resources :communities
+  resources :communities do
+    collection do
+      get :kick_out
+    end
+  end
+
   
   root :to => 'pages#home'
 

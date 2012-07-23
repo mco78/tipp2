@@ -1,11 +1,12 @@
  # -*- coding: utf-8 -*-
 class PostsController < ApplicationController
 
-	before_filter :authenticate_admin!, :except => [:show, :news]
-	
+	before_filter :authenticate_admin!, :except => [:show, :news, :new_userpost, :create, :edit, :update]
+
+
 	def index
 		@title = "Übersicht Posts"
-		@posts = Post.all
+		@posts = Post.paginate(page: params[:page])
 	end
 
 	def news
@@ -23,10 +24,19 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
+	def new_userpost
+		@title = "Post erstellen"
+		@user = current_user
+		@community = Community.find(@user.community_id)
+		@post = Post.new
+	end		
+
 	def edit
 		@title = "Post bearbeiten"
 		@post = Post.find(params[:id])
-	end
+		@user = current_user
+		@community = Community.find(@user.community_id)
+	end	
 
 	def create
 		@post = Post.new(params[:post])

@@ -1,6 +1,19 @@
-<h1>Post bearbeiten</h1>
+<h1>Beitrag bearbeiten</h1>
 
-<%= render 'form' %>
+<% if admin_signed_in? %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+	<%= link_to 'Anzeigen', @post %> |
+	<%= link_to 'Zurück', posts_path %>
+<% else %>
+	<% if @post.user_id === @user.id %>
+		<%= render 'userpost_form' %>
+		<%= link_to 'Zurück', root_path %>
+	<% else %>
+		<div class="alert alert-error">
+    		<p>Du kannst diesen Beitrag nicht bearbeiten, da du nicht der Autor bist! </p>
+    		<%= link_to 'Zurück', root_path %>
+    	</div>
+    <% end -%>
+<% end %>
+

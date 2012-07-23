@@ -38,48 +38,66 @@
 				<% end %>
 			</tr>
 
-			<% @users.each do |user| %>
+			<% if @users.nil? %>
 				<tr>
-					<% if user == current_user %>
-						<td><b><%= user.username %></b></td>
-						<td><b><%= sum_points(user, @games) %></b>
+					<td><%= @user.username %></td>
+					<td><%= sum_points(@user, @games) %></td>
+				<% @game_bets.each do |game, bets| %>
+					<% if bets.has_key?(@user) %>
+						<td><%= bets[@user].home_bet %> : <%= bets[@user].away_bet %>
+						<% unless bets[@user].points.nil? %>
+							 | <b><%= bets[@user].points %></b>
+						<% end %>
 						</td>
 					<% else %>
-						<td><%= user.username %></td>
-						<td><%= sum_points(user, @games) %></td>
+						<td> </td>
 					<% end %>
-					<% @game_bets.each do |game, bets| %>
+				<% end %>
+				</tr>
+			<% else %>
+				<% @users.each do |user| %>
+					<tr>
 						<% if user == current_user %>
-							<% if bets.has_key?(user) %>
-								<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
-								<% unless bets[user].points.nil? %>
-									 | <b><%= bets[user].points %></b>
-								<% end %>
-								</td>
-							<% else %>
-								<td> </td>
-							<% end %>
+							<td><b><%= user.username %></b></td>
+							<td><b><%= sum_points(user, @games) %></b>
+							</td>
 						<% else %>
-							<% if Time.now >= game.kickoff %>
+							<td><%= user.username %></td>
+							<td><%= sum_points(user, @games) %></td>
+						<% end %>
+						<% @game_bets.each do |game, bets| %>
+							<% if user == current_user %>
 								<% if bets.has_key?(user) %>
 									<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 									<% unless bets[user].points.nil? %>
-									 | <b><%= bets[user].points %></b>
+										 | <b><%= bets[user].points %></b>
 									<% end %>
 									</td>
 								<% else %>
 									<td> </td>
 								<% end %>
 							<% else %>
-								<% if bets.has_key?(user) %>
-									<td>- : -</td>
+								<% if Time.now >= game.kickoff %>
+									<% if bets.has_key?(user) %>
+										<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
+										<% unless bets[user].points.nil? %>
+										 | <b><%= bets[user].points %></b>
+										<% end %>
+										</td>
+									<% else %>
+										<td> </td>
+									<% end %>
 								<% else %>
-									<td></td>
+									<% if bets.has_key?(user) %>
+										<td>- : -</td>
+									<% else %>
+										<td></td>
+									<% end %>
 								<% end %>
 							<% end %>
 						<% end %>
-					<% end %>
-				</tr>
+					</tr>
+				<% end %>
 			<% end %>
 		</table>
 	</div>

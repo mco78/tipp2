@@ -2,20 +2,33 @@
 
 <div class="row">
 	<div class="span8">
+	<div class="main_content">
+			<h2><%= @post.headline %></h2>
 
-		<h2><%= @post.headline %></h2>
+			<p>Erstellt: <%= @post.created_at.strftime("%d.%m.%y %H:%M") %> 
+				<% unless @post.updated_at == @post.created_at %>
+					| Geändert: <%= @post.updated_at.strftime("%d.%m.%y %H:%M") %> 
+				<% end %>
+			<br>
+			<% unless @post.category.nil? %>
+				Kategorie: <%= @post.category %></br>
+			<% end %>
+			<% unless @post.user_id.nil? %>
+				Autor: <%= User.find(@post.user_id).username %></br>
+			<% end %>
+			</p>
 
-		<p>Erstellt: <%= @post.created_at.strftime("%d.%m.%y %H:%M") %> | Geändert: <%= @post.updated_at.strftime("%d.%m.%y %H:%M") %>
-		</p>
+			<hr>
 
-		<p><%= simple_format(@post.content) %></p>
+			<p><%= simple_format(@post.content) %></p>
 
-		<% if admin_signed_in? %>
-		    <%= link_to 'Edit', edit_post_path(@post) %> |
-			<%= link_to 'Back', posts_path %>
-		<% else %>
-			<b><%= link_to 'zurück', root_path %></b>
-		<% end %>
+			<% if admin_signed_in? %>
+			    <%= link_to 'Edit', edit_post_path(@post) %> |
+				<%= link_to 'Back', posts_path %>
+			<% else %>
+				<b><%= link_to 'zurück', root_path %></b>
+			<% end %>
+		</div>
 	</div>
 	<div class="span2">
 

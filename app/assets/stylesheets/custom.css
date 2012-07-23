@@ -118,6 +118,21 @@ a:hover {
     margin-bottom: none;
 }
 
+/* Community-News Section */
+
+.user_post_button {
+  margin-bottom: 10px;
+}
+
+.post_preview {
+  background-color: #F5F5F5;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px 4px 4px 4px;
+  display: block;
+  margin: 0 0 9px;
+  padding: 8.5px;
+}
+
 /* Anpassungen Tabellen */
 .table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {
     background-color: #F5F5F5;

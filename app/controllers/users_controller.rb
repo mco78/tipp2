@@ -13,4 +13,5 @@ class UsersController < ApplicationController
 		flash[:success] = "User gelöscht"
 		redirect_to :back
 	end
+
 end

@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="span8">
+		<div class="main_content">
+			<h2>Community <%= @community.name %></h2>
+
+			<p>Community-Administrator: <%= @admin.username %></p>
+
+			<p><%= @members.count %> Mitglieder:</p>
+
+			<ul>
+				<% @members.each do |m| %>
+					<li><%= m.username %> | <a href="mailto: <%= m.email %>">E-Mail schreiben</a></li>
+						<!-- hier muss später das Profil verlinkt sein -->
+				<% end %>
+			</ul>
+
+			<% if user_signed_in? %>
+				<% if current_user.id === @community.admin_id %>
+					<h3>Community-Admin Optionen</h3>
+
+					<p>Du bist Administrator dieser Community.</p>
+
+					<%= link_to "Name oder Passwort ändern", edit_community_path, :class => "btn" %></br>
+					<%= link_to 'Community löschen', @community, :confirm => 'Sicher? Alle restlichen Mitglieder werden aus der Community entfernt! Du kannst auch unter deinem Nutzer-Profil einfach aus der Community austreten und ein anderer Spieler wird Administrator.', :class => "btn", :method => :delete %>
+				<% end %>
+			<% end %>
+			<% if admin_signed_in? %>
+				<%= link_to 'Zurück zur Community Übersicht', communities_path %>
+			<% end %>
+		</div>
+	</div>
+</div>

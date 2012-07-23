@@ -19,233 +19,197 @@ User.delete_all
 
 Bet.delete_all
 
-cup1 = Cup.create( :name => "EM2012" )
+Community.delete_all
 
-round1 = Round.create(	:name 	=> "Vorrunde, 1. Spt.", 
+cup1 = Cup.create( :name => "Bundesliga 2012/2013" )
+
+round1 = Round.create(	:name 	=> "1. Spieltag", 
 						:leg 	=> 1, :cup_id => cup1.id)
 
-round2 = Round.create(	:name 	=> "Vorrunde, 2. Spt.",
+round2 = Round.create(	:name 	=> "2. Spieltag",
 						:leg 	=> 2,
 						:cup_id => cup1.id)
 
-round3 = Round.create(	:name 	=> "Vorrunde, 3. Spt.",
-						:leg 	=> 3,
-						:cup_id => cup1.id)
+team1 = Team.create(	:name 	=> "Borrussia Dortmund",
+						:acronym => "BVB")
 
-team1 = Team.create(	:name 	=> "Polen",
-						:acronym => "POL")
+team2 = Team.create(	:name 	=> "Werder Bremen",
+						:acronym => "WER")
 
-team2 = Team.create(	:name 	=> "Griechenland",
-						:acronym => "GRE")
+team3 = Team.create(	:name 	=> "Borussia M'Gladbach",
+						:acronym => "GLA")
 
-team3 = Team.create(	:name 	=> "Russland",
-						:acronym => "RUS")
+team4 = Team.create(	:name 	=> "1899 Hoffenheim",
+						:acronym => "HOF")
 
-team4 = Team.create(	:name 	=> "Tschechien",
-						:acronym => "CZE")
+team5 = Team.create(	:name 	=> "SC Freiburg",
+						:acronym => "SCF")
 
-team5 = Team.create(	:name 	=> "Niederlande",
-						:acronym => "NED")
+team6 = Team.create(	:name 	=> "1. FSV Mainz 05",
+						:acronym => "MAI")
 
-team6 = Team.create(	:name 	=> "Dänemark",
-						:acronym => "DEN")
+team7 = Team.create(	:name 	=> "FC Augsburg",
+						:acronym => "FCA")
 
-team7 = Team.create(	:name 	=> "Deutschland",
-						:acronym => "GER")
+team8 = Team.create(	:name 	=> "Fortuna Düsseldorf",
+						:acronym => "DÜS")
 
-team8 = Team.create(	:name 	=> "Portugal",
-						:acronym => "POR")
+team9 = Team.create(	:name 	=> "Hamburger SV",
+						:acronym => "HSV")
 
-team9 = Team.create(	:name 	=> "Spanien",
-						:acronym => "ESP")
+team10 = Team.create(	:name 	=> "1. FC Nürnberg",
+						:acronym => "FCN")
 
-team10 = Team.create(	:name 	=> "Italien",
-						:acronym => "ITA")
+team11 = Team.create(	:name 	=> "SpVgg Greuther Fürth",
+						:acronym => "FÜR")
 
-team11 = Team.create(	:name 	=> "Irland",
-						:acronym => "IRL")
+team12 = Team.create(	:name 	=> "Bayern München",
+						:acronym => "BAY")
 
-team12 = Team.create(	:name 	=> "Kroatien",
-						:acronym => "CRO")
-
-team13 = Team.create(	:name 	=> "Frankreich",
+team13 = Team.create(	:name 	=> "Eintracht Frankfurt",
 						:acronym => "FRA")
 
-team14 = Team.create(	:name 	=> "England",
-						:acronym => "ENG")
+team14 = Team.create(	:name 	=> "Bayer Leverkusen",
+						:acronym => "LEV")
 
-team15 = Team.create(	:name 	=> "Ukraine",
-						:acronym => "UKR")
+team15 = Team.create(	:name 	=> "VfB Stuttgart",
+						:acronym => "STU")
 
-team16 = Team.create(	:name 	=> "Schweden",
-						:acronym => "SWE")
+team16 = Team.create(	:name 	=> "VfL Wolfsburg",
+						:acronym => "WOL")
+
+team17 = Team.create(	:name 	=> "Hannover 96",
+						:acronym => "H96")
+
+team18 = Team.create(	:name 	=> "FC Schalke 04",
+						:acronym => "S04")
 
 game1 = Game.create(:round_id => round1.id,
-			:kickoff => "08/06/2012 18:00",
+			:kickoff => "24/08/2012 20:30",
 			:home_team => team1.id,
 			:away_team => team2.id
 			)
 
 game2 = Game.create(:round_id => round1.id,
-			:kickoff => "08/06/2012 20:45",
+			:kickoff => "25/08/2012 15:30",
 			:home_team => team3.id,
 			:away_team => team4.id
 			)
 
 game3 = Game.create(:round_id => round1.id,
-			:kickoff => "09/06/2012 18:00",
+			:kickoff => "25/08/2012 15:30",
 			:home_team => team5.id,
 			:away_team => team6.id
 			)
 
 game4 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "09/06/2012 20:45",
+			:kickoff => "25/08/2012 15:30",
 			:home_team => team7.id,
 			:away_team => team8.id
 			)
 
 game5 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "10/06/2012 18:00",
+			:kickoff => "25/08/2012 15:30",
 			:home_team => team9.id,
 			:away_team => team10.id
 			)
 
 game6 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "10/06/2012 21:45",
+			:kickoff => "25/08/2012 15:30",
 			:home_team => team11.id,
 			:away_team => team12.id
 			)
 
 game7 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "11/06/2012 18:00",
+			:kickoff => "25/08/2012 18:30",
 			:home_team => team13.id,
 			:away_team => team14.id
 			)
 
 game8 = Game.create(
 			:round_id => round1.id,
-			:kickoff => "11/06/2012 20:45",
+			:kickoff => "26/08/2012 15:30",
 			:home_team => team15.id,
 			:away_team => team16.id
 			)
 
 game9 = Game.create(
-			:round_id => round2.id,
-			:kickoff => "12/06/2012 18:00",
-			:home_team => team2.id,
-			:away_team => team4.id
+			:round_id => round1.id,
+			:kickoff => "26/08/2012 17:30",
+			:home_team => team17.id,
+			:away_team => team18.id
 			)
+
+#2. Spieltag
 
 game10 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "12/06/2012 20:45",
-			:home_team => team1.id,
-			:away_team => team3.id
+			:kickoff => "31/08/2012 20:30",
+			:home_team => team6.id,
+			:away_team => team11.id
 			)
 
 game11 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "13/06/2012 18:00",
-			:home_team => team6.id,
-			:away_team => team8.id
+			:kickoff => "01/09/2012 15:30",
+			:home_team => team18.id,
+			:away_team => team7.id
 			)
 
 game12 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "13/06/2012 20:45",
-			:home_team => team5.id,
-			:away_team => team7.id
+			:kickoff => "01/09/2012 15:30",
+			:home_team => team14.id,
+			:away_team => team5.id
 			)
 
 game13 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "14/06/2012 18:00",
-			:home_team => team10.id,
-			:away_team => team12.id
+			:kickoff => "01/09/2012 15:30",
+			:home_team => team2.id,
+			:away_team => team9.id
 			)
 
 game14 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "14/06/2012 20:45",
-			:home_team => team9.id,
-			:away_team => team11.id
+			:kickoff => "01/09/2012 15:30",
+			:home_team => team10.id,
+			:away_team => team1.id
 			)
 
 game15 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "15/06/2012 18:00",
-			:home_team => team15.id,
+			:kickoff => "01/09/2012 15:30",
+			:home_team => team4.id,
 			:away_team => team13.id
 			)
 
 game16 = Game.create(
 			:round_id => round2.id,
-			:kickoff => "15/06/2012 20:45",
-			:home_team => team16.id,
-			:away_team => team14.id
-			)
-
-game17 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "16/06/2012 20:45",
-			:home_team => team4.id,
-			:away_team => team1.id
-			)
-
-game18 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "16/06/2012 20:45",
-			:home_team => team2.id,
+			:kickoff => "01/09/2012 18:30",
+			:home_team => team8.id,
 			:away_team => team3.id
 			)
 
-game19 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "17/06/2012 20:45",
-			:home_team => team8.id,
-			:away_team => team5.id
+game17 = Game.create(
+			:round_id => round2.id,
+			:kickoff => "02/09/2012 15:30",
+			:home_team => team16.id,
+			:away_team => team17.id
 			)
 
-game20 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "17/06/2012 20:45",
-			:home_team => team6.id,
-			:away_team => team7.id
-			)
-
-
-game21 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "18/06/2012 20:45",
+game18 = Game.create(
+			:round_id => round2.id,
+			:kickoff => "02/09/2012 17:30",
 			:home_team => team12.id,
-			:away_team => team9.id
-			)
-
-game22 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "18/06/2012 20:45",
-			:home_team => team10.id,
-			:away_team => team11.id
-			)
-
-game23 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "19/06/2012 20:45",
-			:home_team => team14.id,
 			:away_team => team15.id
 			)
 
-game24 = Game.create(
-			:round_id => round3.id,
-			:kickoff => "19/06/2012 20:45",
-			:home_team => team16.id,
-			:away_team => team13.id
-			)
-
+#Users
 
 user1 = User.create( 	:username => "test",
 						:email => "test@test.com",

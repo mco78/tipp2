@@ -1,0 +1,28 @@
+<%= form_for(@community) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <% if @community.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@community.errors.count, "error") %> prohibited this community from being saved:</h2>
+
+      <ul>
+      <% @community.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :admin_id, :value => @user.id %>
+
+  <div class="field">
+    <%= f.label :name%><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Community-Passwort" %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

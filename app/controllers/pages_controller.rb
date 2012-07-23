@@ -5,11 +5,16 @@ class PagesController < ApplicationController
 
 	def home
 		@title = "Homepage"
-		@posts = Post.where(:category => "News").limit(5)
 		@games = Game.find(:all, :conditions => ["kickoff > ?", Time.now],
 	 							:order => 'kickoff ASC', :limit => 9)
 		if user_signed_in?
 			@user = current_user
+			if @user.community_id.nil?
+				@posts = Post.where(:category => "News")
+			else
+				@community = Community.find(@user.community_id)
+				@posts = Post.where(:category => ["News", "com" + @community.id.to_s])
+			end
 			@bets = @user.bets
 		end
 	end

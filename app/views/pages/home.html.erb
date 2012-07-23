@@ -1,29 +1,17 @@
 <div class="row">
 	<% if user_signed_in? %>
 			<div class="span8" id="user_news">
-				<div class="main_content">
-					<h2>Neuigkeiten</h2>
-					<p></p>
-					<% @posts.each do |post| %>
-						<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
-						<h4><%= post.headline %></h4>
-						<p><%= truncate(simple_format(post.content), :length => 500, :separator => ' ') %>
-						<% if post.content.length > 500 %>
-							<%= link_to "mehr", post %>
-						<% end %>
-						</p>
-					<% end %>
-				</div>
+				<% if @user.community_id.nil? %>
+					<%= render 'shared/community_menu' %>
+					<%= render 'tipp2_news' %>
+				<% else %>
+					<%= render 'community_news' %>
+				<% end %>
 			</div>
-			
 	<% else %>
 		<div class="span8" id="welcome">
 			<div class="hero-unit">
-				<h1>Das Fußball-Tippspiel</h1>
-				<p>Melde Dich an, tippe auf Spiele, sammel Punkte und beeindrucke deine Freunde mit Fussball-Sachverstand :-)</p>
-				
-				<p><%= link_to "Jetzt registrieren", new_user_registration_path, :class => "btn btn-success btn-large" %></p>
-				<%= link_to "Schon registriert? Log in!",  user_session_path, :class => "zusatzlink" %>
+				<%= render 'welcome' %>
 			</div>
 		</div>
 	<% end %>

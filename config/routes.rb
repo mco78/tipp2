@@ -2,7 +2,7 @@ Tipp5::Application.routes.draw do
   
   devise_for :admins
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
 
   # match 'games/add_result' => 'games#add_result'
@@ -27,6 +27,8 @@ Tipp5::Application.routes.draw do
 
   resources :teams
 
+  resources :communities
+  
   root :to => 'pages#home'
 
   match '/admin',     :to => 'pages#admin'
@@ -42,6 +44,8 @@ Tipp5::Application.routes.draw do
 
   match '/news',      :to => 'posts#news'
 
+  match '/join',      :to => 'communities#join'
+  match '/leave',     :to => 'communities#leave'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

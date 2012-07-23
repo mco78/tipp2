@@ -21,6 +21,16 @@
     <div><%= f.submit "Profil aktualisieren" %></div>
   <% end %>
 
+  <h3>Community</h3>
+
+  <% if current_user.community_id.nil? %>
+    <%= render 'shared/community_menu' %>
+  <% else %>
+    <p>Du gehörst zur Community <%= Community.find(current_user.community_id).name %></p>
+    <p>Zum Austreten aus der Community, bitte folgenden Button klicken:</p>
+    <%= link_to "Aus Community austreten", leave_path, :class => "btn" %>
+  <% end %>
+
   <h3>Account löschen</h3>
 
   <p>unglücklich? <%= link_to "Account löschen", registration_path(resource_name), :confirm => "Bist du sicher?", :method => :delete %>.</p>

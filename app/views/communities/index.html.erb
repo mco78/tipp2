@@ -1,0 +1,30 @@
+<h3>Communities anzeigen</h3>
+
+<table class="table table-striped table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Admin User</th>
+    <th>Passwort</th>
+    <th>Erstellt am</th>
+    <th>Mitglieder</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @communities.each do |community| %>
+    <tr>
+        <td><%= community.name %></td>
+        <td><%= User.find(community.admin_id).username  %></td>
+        <td><%= community.password %></td>
+        <td><%= community.created_at.strftime("%d.%m.%y") %></td>
+        <td><%= community.users.count %></td>
+        <td><%= link_to 'ansehen', community %></td>
+        <td><%= link_to 'löschen', community, :confirm => 'Sicher?', :method => :delete %></td>
+      </tr>
+    <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Zurück zur Admin Übersicht', admin_path %>

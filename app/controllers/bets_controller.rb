@@ -52,7 +52,8 @@ class BetsController < ApplicationController
 
 	def index
 		@title = "Tippübersicht"
-		@users = User.all
+		@community = Community.find(current_user.community_id)
+		@users = User.where(:community_id => @community.id)
 
 		if params[:cup_id].nil?
 			if params[:round_id].nil?
@@ -98,6 +99,7 @@ class BetsController < ApplicationController
 
 	def ranking
 		@title = "Ranking"
+		@community = Community.find(current_user.community_id)
 
 		@cup_options = Cup.all
 		if params[:cup_id].nil?
@@ -109,7 +111,7 @@ class BetsController < ApplicationController
 
 		@rounds = @cup.rounds.order('leg ASC')
 		#hier active_rounds filtern -> runden in denen schon punkte verteilt wurden
-		@users = User.all
+		@users = User.where(:community_id => @community.id)
 		@rankingusers = get_ranking(@users, @cup)
 	end
 

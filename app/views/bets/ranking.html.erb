@@ -19,7 +19,7 @@
 					<td><%= link_to @user.username, user_path(@user) %></td>
 					<td><%= @cup_points %></td>
 					<% @rounds.each do |round| %>
-						<td><b><%= get_round_points(@user, round)%></b></td>
+						<td><strong><%= get_round_points(@user, round)%></strong></td>
 					<% end %>
 				</tr>
 			<% else %>
@@ -27,10 +27,10 @@
 					<tr>
 						<% user = User.find(user_id) %>
 						<% if user == current_user %>
-							<td><b><%= link_to user.username, user_path(user) %></b></td>
-							<td><b><%= "#{cup_points}" %></b></td>
+							<td><strong><%= link_to user.username, user_path(user) %></strong></td>
+							<td><strong><%= cup_points %></strong></td>
 							<% @rounds.each do |round| %>
-								<td><b><%= get_round_points(user, round)%></b></td>
+								<td><strong><%= get_round_points(user, round)%></strong></td>
 							<% end %>
 						<% else %>
 							<td><%= link_to user.username, user_path(user) %></td>

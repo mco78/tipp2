@@ -29,15 +29,16 @@ de:
       send_instructions: 'Du wirst in Kürze eine E-Mail erhalten mit deren Hilfe du deinen Account bestätigen kannst.'
       confirmed: 'Dein Acoount wurde erfolgreich bestätigt. Du bist nun angemeldet.'
     registrations:
-      signed_up: 'Der Benutzer wurde erfolreich angelegt. Falls das Bestätigungsmodul eingeschaltet ist, wird nun eine Bestätigungsmail versand.'
+      signed_up: 'Der Benutzer wurde erfolreich angelegt.'
       updated: 'You updated your account successfully.'
       destroyed: 'Der Benutzer wurde erfolgreich gelöscht.'
+      signed_up_but_unconfirmed: 'Der Benutzer wurde erfolgreich angelegt. Du erhälst zur Bestätigung des Accounts eine E-Mail.'
     unlocks:
       send_instructions: 'Du wirst in Kürze eine E-Mail mit den Anweisungen zum Entsperren des Accounts erhalten.'
       unlocked: 'Dein Acoount wurde erfolgreich entsperrt. Du bist nun angemeldet'
     mailer:
       confirmation_instructions:
-        subject: 'Anweisungen zur Bestätigung'
+        subject: 'Willkommen bei tipp2! Bestätige deine E-Mail-Adresse!'
       reset_password_instructions:
         subject: 'Anweisungen zur Passwortwiederherstellung'
       unlock_instructions:

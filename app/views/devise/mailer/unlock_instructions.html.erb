@@ -1,7 +1,6 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Hallo <%= @resource.username %>!</p>
 
-<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
+<p>Dein tipp2-Account wurde aufgrund einer hohen Zahl an erfolglosen Login-Versuchen gesperrt.</p>
+<p>Klicke den folgenden link, um deinen Account zu entsperren:</p>
 
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+<p><%= link_to 'Account entsperren', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

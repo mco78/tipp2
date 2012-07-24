@@ -28,13 +28,13 @@
 				<td></td>
 				<td></td>
 				<% @games.each do |game| %>
-					<td><b>
+					<td><strong>
 						<% if game.home_score.nil? %>
 							 - : -
 						<% else %>
 							<%= game.home_score %> : <%= game.away_score %>
 						<% end %>
-					</b></td>
+					</strong></td>
 				<% end %>
 			</tr>
 
@@ -46,7 +46,7 @@
 					<% if bets.has_key?(@user) %>
 						<td><%= bets[@user].home_bet %> : <%= bets[@user].away_bet %>
 						<% unless bets[@user].points.nil? %>
-							 | <b><%= bets[@user].points %></b>
+							 | <strong><%= bets[@user].points %></strong>
 						<% end %>
 						</td>
 					<% else %>
@@ -55,22 +55,23 @@
 				<% end %>
 				</tr>
 			<% else %>
-				<% @users.each do |user| %>
+				<% @users_round_points.sort_by { |k| k["points"]}.reverse.each do |urp| %>
 					<tr>
+						<% user = User.find(urp["user_id"]) %>
 						<% if user == current_user %>
-							<td><b><%= link_to user.username, user_path(user) %></b></td>
-							<td><b><%= sum_points(user, @games) %></b>
+							<td><strong><%= link_to user.username, user_path(user) %></strong></td>
+							<td><strong><%= urp["points"] %></strong>
 							</td>
 						<% else %>
 							<td><%= link_to user.username, user_path(user) %></td>
-							<td><%= sum_points(user, @games) %></td>
+							<td><%= urp["points"] %></td>
 						<% end %>
 						<% @game_bets.each do |game, bets| %>
 							<% if user == current_user %>
 								<% if bets.has_key?(user) %>
 									<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 									<% unless bets[user].points.nil? %>
-										 | <b><%= bets[user].points %></b>
+										 | <strong><%= bets[user].points %></strong>
 									<% end %>
 									</td>
 								<% else %>
@@ -81,7 +82,7 @@
 									<% if bets.has_key?(user) %>
 										<td><%= bets[user].home_bet %> : <%= bets[user].away_bet %>
 										<% unless bets[user].points.nil? %>
-										 | <b><%= bets[user].points %></b>
+										 | <strong><%= bets[user].points %></strong>
 										<% end %>
 										</td>
 									<% else %>

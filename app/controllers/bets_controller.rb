@@ -79,6 +79,7 @@ class BetsController < ApplicationController
 			end
 		end
 
+		@users_round_points = get_users_round_points(@users, @round)
 		@cup_options = Cup.all
 		@round_options = @cup.rounds
 		@games = @round.games.order('kickoff ASC')
@@ -115,7 +116,7 @@ class BetsController < ApplicationController
 			@cup = Cup.find(params[:cup_id])
 		end
 
-		@rounds = @cup.rounds.order('leg ASC')
+		@rounds = get_active_rounds(@cup).sort! { |a, b| a.leg <=> b.leg }
 		#hier active_rounds filtern -> runden in denen schon punkte verteilt wurden
 		if current_user.community_id.nil?
 			@user = current_user
@@ -247,6 +248,47 @@ class BetsController < ApplicationController
 			end
 		end
 		return cup_points
+	end
+
+	def get_active_rounds(cup)
+		rounds = cup.rounds
+		active_rounds = []
+		rounds.each do |r|
+			games = r.games
+			finished_games = 0
+			games.each do |g|
+				unless g.away_score.nil?
+					finished_games = finished_games + 1
+				end
+			end
+			unless finished_games == 0
+				active_rounds.push(r)
+			end
+		end
+		return active_rounds
+	end
+
+	def get_users_round_points(users, round)
+		games = round.games
+		users_round_points = []
+		users.each do |u|
+			user_points = sum_points(u, games)
+			users_round_points.push({"user_id"=>u.id, "points"=>user_points})
+		end
+		return users_round_points
+	end
+
+	def sum_points(user, games)
+		p = 0
+		games.each do |game|
+			userbet = user.bets.where(:game_id => game.id).first
+			unless userbet.nil?
+				unless userbet.points.nil?
+					p = p + userbet.points
+				end
+			end
+		end
+		return p
 	end
 
 end

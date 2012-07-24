@@ -1,0 +1,12 @@
+<h1>Leute einladen</h1>
+
+<p>Gebe in das Eingabefeld eine E-Mail Adresse ein, um eine Einladung mit den Zugangsdaten deiner Community an diese Adresse zu senden.</p>
+
+<%= form_tag invite_communities_path, :method => 'get' do %>
+	<p>
+		<%= text_field_tag :address, params[:address] %><br>
+		<%= submit_tag "einladen", :class => "btn" %>
+	</p>
+<% end %>
+
+<%= link_to "zurück", @community %>

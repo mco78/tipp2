@@ -34,6 +34,7 @@ Tipp5::Application.routes.draw do
   resources :communities do
     collection do
       get :kick_out
+      get :invite
     end
   end
 

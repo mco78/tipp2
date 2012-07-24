@@ -14,7 +14,7 @@
 			<h4><%= post.headline %></h4>
 			<%= post.created_at.strftime("%d.%m.%y %H:%M")%>
 			<% unless post.user_id.nil? %>
-				 | <%= User.find(post.user_id).username %> 
+				 | <%= link_to User.find(post.user_id).username, user_path(User.find(post.user_id)) %>
 			<% end %>
 			<p><%= truncate(simple_format(post.content), :length => 500, :separator => ' ') %>
 			<% if post.content.length > 500 %>

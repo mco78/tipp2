@@ -9,7 +9,9 @@
 
 			<ul>
 				<% @members.each do |m| %>
-					<li><%= m.username %> | <a href="mailto: <%= m.email %>">E-Mail schreiben</a>
+					<li><%= link_to m.username, user_path(m) %>
+
+					 | <a href="mailto: <%= m.email %>">E-Mail schreiben</a>
 						<% if current_user.id === @community.admin_id %>
 								<% unless m.id === current_user.id %>
 									 | <%= link_to "Spieler aus der Community werfen",  kick_out_communities_path(:user_id =>m.id), :confirm => 'Sicher? Du solltest hierfür gute Gründe haben!' %>
@@ -26,8 +28,11 @@
 
 					<p>Du bist Administrator dieser Community.</p>
 
-					<%= link_to "Name oder Passwort ändern", edit_community_path, :class => "btn" %></br>
-					<%= link_to 'Community löschen', @community, :confirm => 'Sicher? Alle restlichen Mitglieder werden aus der Community entfernt! Du kannst auch unter deinem Nutzer-Profil einfach aus der Community austreten und ein anderer Spieler wird Administrator.', :class => "btn", :method => :delete %>
+					<p><%= link_to "Leute einladen", invite_communities_path, :class => "btn" %></p>
+
+					<p><%= link_to "Name oder Passwort ändern", edit_community_path, :class => "btn" %></p>
+
+					<p><%= link_to 'Community löschen', @community, :confirm => 'Sicher? Alle restlichen Mitglieder werden aus der Community entfernt! Du kannst auch unter deinem Nutzer-Profil einfach aus der Community austreten und ein anderer Spieler wird Administrator.', :class => "btn", :method => :delete %></p>
 				<% end %>
 			<% end %>
 			<% if admin_signed_in? %>

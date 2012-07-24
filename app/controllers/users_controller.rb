@@ -14,4 +14,24 @@ class UsersController < ApplicationController
 		redirect_to :back
 	end
 
+	def show
+		@user = User.find(params[:id])
+		@points_per_bet = points_per_bet(@user)
+	end
+
+	private
+
+	def points_per_bet(user)
+		bets = user.bets
+		bet_count = user.bets.count
+		points = 0
+		bets.each do |bet|
+			unless bet.points.nil?
+				points = points ++ bet.points
+			end
+		end
+		average_points = points / bet_count
+		return average_points
+	end
+
 end

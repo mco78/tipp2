@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
 	#ACHTUNG: Wer kann was wann sehen? Authenticate 
 	#nochmal überarbeiten
 	before_filter :authenticate_admin!, :only => [:index]
-	before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :join, :leave] 
+	before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :join, :leave, :invite] 
 	before_filter :authenticate_any!, :only => [:show, :destroy]
 
 
@@ -34,6 +34,17 @@ class CommunitiesController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def invite
+		@user = current_user
+		@community = Community.find(current_user.community_id)
+		unless params[:address].nil?
+			@address = params[:address]
+			CommunityMailer.community_invitation(@address, @user, @community).deliver
+			flash[:success] = "E-Mail Einladung an " + @address + " versendet."
+		end
+	end 
+
 
 	def create
 		@community = Community.new(params[:community])

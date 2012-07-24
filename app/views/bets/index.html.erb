@@ -40,7 +40,7 @@
 
 			<% if @users.nil? %>
 				<tr>
-					<td><%= @user.username %></td>
+					<td><%= link_to @user.username, user_path(@user) %></td>
 					<td><%= sum_points(@user, @games) %></td>
 				<% @game_bets.each do |game, bets| %>
 					<% if bets.has_key?(@user) %>
@@ -58,11 +58,11 @@
 				<% @users.each do |user| %>
 					<tr>
 						<% if user == current_user %>
-							<td><b><%= user.username %></b></td>
+							<td><b><%= link_to user.username, user_path(user) %></b></td>
 							<td><b><%= sum_points(user, @games) %></b>
 							</td>
 						<% else %>
-							<td><%= user.username %></td>
+							<td><%= link_to user.username, user_path(user) %></td>
 							<td><%= sum_points(user, @games) %></td>
 						<% end %>
 						<% @game_bets.each do |game, bets| %>

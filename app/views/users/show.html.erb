@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="span8">
+		<div class="main_content">
+			<h2><%= @user.username %></h2>
+
+			<p>E-Mail: <%= @user.email %>
+			<% unless @user.community_id.nil? %>
+				<br>Community: <%= Community.find(@user.community_id).name %>
+			<% end %>
+			</p>
+
+			<h4>Login-Statistiken:</h4>
+			<ul>
+				<li>Mitglied seit: <%= @user.created_at.strftime("%d.%m.%y") %></li>
+				<li>Logins: <%= @user.sign_in_count %></li>
+				<li>Letzter Login: <%= @user.last_sign_in_at.strftime("%d.%m.%y %H:%M") %></li>
+			</ul>
+
+			<h4>Spiel-Statistiken:</h4>
+			<ul>
+				<li>Tipps abgegeben: <%= @user.bets.count %></li>
+				<li>Punkte pro Tipp: <%= @points_per_bet %></li>
+			</ul>
+
+			<%= link_to 'zurück', :back %>
+		</div>
+	</div>
+</div>

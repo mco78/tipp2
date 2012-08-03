@@ -21,8 +21,7 @@
 				<%= link_to "mehr", post %>
 			<% end %></p>
 			<% if post.user_id === current_user.id %>
-				<%= link_to "Beitrag bearbeiten", edit_post_path(post) %> | 
-				<%= link_to "löschen", post, :confirm => 'Sicher?', :method => :delete %>
+				<%= link_to "Beitrag bearbeiten", edit_post_path(post) %>
 			<% end %>
 		</div>
 	<% end %>

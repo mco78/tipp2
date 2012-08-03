@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:success] = "Post erfolgreich erstellt."
-			redirect_to @post
+			redirect_to root_path
 		else
 			flash[:error] = "Fehler!"
 			redirect_to :back

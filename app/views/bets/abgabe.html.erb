@@ -6,10 +6,6 @@
 
 <% unless @cup.nil? %>
 	
-	<div class="alert alert-info">
-		<strong>Achtung!</strong> Aus technischen Gründen muss jeder Tipp mittels <i type="submit" class="icon-check"></i> Button einzeln abgespeichert werden. In einer der nächsten Updates wird es einen einzelnen "Speichern"-Button für den ganzen Spieltag geben. Sorry... 
-	</div>
-	
 	<div class="main_content">
 		<div class="change_round">
 			<% unless @previousround.nil? %>
@@ -56,44 +52,37 @@
 							
 							<!-- hier wird Form eingefügt -->
 							<% if @bets.exists?(:game_id => game.id) %>
-								<%= form_for(bet) do |f| %>
+								<%= form_for bet, :remote => true do |f| %>
 			
 									<%= f.hidden_field :game_id, :value => game.id %>
 
 									<span class="field">
-										<%= f.number_field :home_bet %> 
+										<%= f.number_field :home_bet, :class => 'submittable' %> 
 									</span> : 
 	 
 									<span class="field"> 
-										<%= f.number_field :away_bet %> 
+										<%= f.number_field :away_bet, :class => 'submittable' %> 
 									</span>
 
-								    <button type="submit" class="btn btn-mini" title="aktualisieren">
-										<i type="submit" class="icon-edit"></i>
-									</button>
-
-
-									 </span>
-									 
-									 	<%= link_to bet, :method => :delete, :title => "löschen", :confirm => "sicher?" do %>
-									 		<i class="icon-remove"></i>
-									 	<% end -%>
+									<%= link_to bet, :method => :delete, :title => "löschen", :confirm => "sicher?" do %>
+										<i class="icon-remove"></i>
+									<% end -%>
 
 								<% end -%>
+
 							<% else %>
-								<%= form_for(@bet) do |f| %>
+								<%= form_for @bet, :remote => true do |f| %>
 		
 									<%= f.hidden_field :game_id, :value => game.id %>
 
 									<span class="field">
-										<%= f.number_field :home_bet %> 
+										<%= f.number_field :home_bet, :class => 'submittable' %> 
 									</span> : 
 								
 									<span class="field"> 
-										<%= f.number_field :away_bet %> 
+										<%= f.number_field :away_bet, :class => 'submittable' %> 
 									</span>
-									<button type="submit" class="btn btn-mini" title="speichern">
-										<i class="icon-check"></i>
+									
 								<% end -%>
 							<% end -%>
 						<% end %>
@@ -113,5 +102,9 @@
 			<% end %>
 			</tbody>
 		</table>
+	</div>
+	<br>
+	<div class="alert alert-success">
+		<strong>Achtung!</strong> Ab sofort werden die Tipps automatisch gespeichert, sobald etwas in die Form-Felder eingetragen wird. Es ist nicht mehr nötig, einen "Speichern"-Button zu drücken. 
 	</div>
 <% end -%>

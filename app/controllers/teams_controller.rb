@@ -48,8 +48,16 @@ class TeamsController < ApplicationController
 	end
 
 	def destroy
-		Team.find(params[:id]).destroy
-		flash[:success] = "Team gelöscht"
-		redirect_to :back
+		team = Team.find(params[:id])
+		homegames = Game.where(:home_team => team.id)
+		awaygames = Game.where(:away_team => team.id)
+		if homegames.empty? && awaygames.empty?
+			team.destroy
+			flash[:success] = "Team gelöscht"
+			redirect_to :back
+		else
+			flash[:warning] = "Für das Team scheint es noch Spiele im System zu geben, daher kann es nicht gelöscht werden!"
+			redirect_to :back
+		end
 	end
 end

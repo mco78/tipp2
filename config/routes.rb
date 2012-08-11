@@ -7,6 +7,9 @@ Tipp5::Application.routes.draw do
 
   # match 'games/add_result' => 'games#add_result'
   resources :cups do
+    member do
+      get 'automate'
+    end
     resources :rounds do
     end
   end
@@ -56,6 +59,7 @@ Tipp5::Application.routes.draw do
 
   match '/join',      :to => 'communities#join'
   match '/leave',     :to => 'communities#leave'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

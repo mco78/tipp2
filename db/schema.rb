@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724074216) do
+ActiveRecord::Schema.define(:version => 20120811124404) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(:version => 20120724074216) do
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+
+  create_table "betrounds", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "round_id"
+  end
 
   create_table "bets", :force => true do |t|
     t.integer  "game_id"
@@ -51,19 +57,22 @@ ActiveRecord::Schema.define(:version => 20120724074216) do
 
   create_table "cups", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "league_shortcut"
+    t.integer  "league_season"
   end
 
   create_table "games", :force => true do |t|
     t.datetime "kickoff"
     t.integer  "home_score"
     t.integer  "away_score"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "round_id"
     t.integer  "home_team"
     t.integer  "away_team"
+    t.integer  "open_liga_id"
   end
 
   create_table "posts", :force => true do |t|
@@ -78,16 +87,18 @@ ActiveRecord::Schema.define(:version => 20120724074216) do
   create_table "rounds", :force => true do |t|
     t.string   "name"
     t.integer  "leg"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "cup_id"
+    t.integer  "open_liga_id"
   end
 
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "acronym"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "open_liga_id"
   end
 
   create_table "users", :force => true do |t|

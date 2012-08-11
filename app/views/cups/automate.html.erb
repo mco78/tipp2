@@ -1,0 +1,46 @@
+<h1>Wettbewerb automatisieren</h1>
+
+<div class="row">
+	<div class="span4">
+		<div class="post_preview">
+			<h3>1. Teams erstellen</h3>
+			<p>Alle Teams des Wettbewerbes von openLigaDB holen. Abgleichen, ob Team schon vorhanden. Wenn ja, openLigaDB-TeamID erstellen. Wenn nein, Team neu erstellen.
+			Die Akronyme sollten manuell angepasst werden!</p>
+			<%= link_to "Go!", automate_cup_path(:task => 'get_teams'), :class => "btn btn-success" %>
+		</div>
+	</div>
+
+	<div class="span4">
+		<div class="post_preview">
+			<h3>2. Spieltage erstellen</h3>
+			<p>Zu Beginn eines Cups werden hiermit die Spieltag initial erstellt.</p>
+			<%= link_to "Go!", automate_cup_path(:task => 'get_rounds'), :class => "btn btn-success" %>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="post_preview">
+			<h3>3. Spiele erstellen</h3>
+			<p>Zu Beginn eines Cups werden hiermit die Spieltag initial erstellt.</p>
+			<%= link_to "Go!", automate_cup_path(:task => 'get_games'), :class => "btn btn-success" %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span8">
+		<% unless @messages.empty? %>
+			<div class="well">
+				<h4>Log:</h4>
+				<ul>
+				<% @messages.each do |m| %>
+					<li><%= m %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+</div>
+<%= link_to 'Wettbewerbsübersicht', cups_path %>
+
+
+
+

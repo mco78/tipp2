@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
 	has_many :users, :through => :bets
 	belongs_to :round
 	belongs_to :cup
-	has_and_belongs_to_many :teams
+	has_many :teams
 
 	validates :round_id,	:presence => true
 	validates :kickoff, 	:presence => true

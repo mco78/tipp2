@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Spiele</th>
     <th>Zeitraum</th>
+    <th>openLigaDB-ID</th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,6 +30,7 @@
                     <%= glast.kickoff.strftime("%d.%m.%y") %>
                 <% end %>
             </td>
+            <td><%= round.open_liga_id %></td>
             <td><%= link_to 'ansehen', games_path(:round_id => round.id) %></td>
             <td><%= link_to 'ändern', edit_cup_round_path(@cup, round) %></td>
             <td><%= link_to 'löschen', [@cup, round], :confirm => 'Sicher? Runden nur löschen, wenn keine Spiele mehr an diesem Spieltag!!', :method => :delete %></td>

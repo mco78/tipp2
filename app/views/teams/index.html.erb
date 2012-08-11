@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Abkürzung</th>
+    <th>openLigaDB ID</th>
     <th>Wettbewerbe <!-- fehlt noch --></th>
     <th></th>
     <th></th>
@@ -14,10 +15,11 @@
   <tr>
     <td><%= team.name %></td>
     <td><%= team.acronym %></td>
+    <td><%= team.open_liga_id %></td>
     <td><!-- fehlt noch --></td>
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, :confirm => 'Sicher?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', team, :confirm => 'Wenn Teams manuell gelöscht werden, hat das Fehlermeldungen auf allen Ebenen zur Folge. Bitte überleg es dir nochmal!', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

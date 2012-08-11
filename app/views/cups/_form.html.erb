@@ -15,6 +15,19 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <p>Die folgenden Felder werden benötigt, um einen Wettbewerb automatisiert über openLigaDB einzurichten. Die entsprechenden Angaben finden sich auf http://www.openligadb.de/</p>
+
+  <div class="field">
+    <%= f.label :league_shortcut %><br />
+    <%= f.text_field :league_shortcut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :league_season %><br />
+    <%= f.text_field :league_season %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

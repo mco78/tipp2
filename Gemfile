@@ -8,6 +8,7 @@ gem "devise", "2.0.0"
 gem 'active_link_to'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'savon'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.5'

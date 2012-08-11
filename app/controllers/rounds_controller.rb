@@ -52,9 +52,16 @@ class RoundsController < ApplicationController
 	end
 
 	def destroy
-		Round.find(params[:id]).destroy
-		flash[:success] = "Spieltag gelöscht"
-		redirect_to :back
+		round = Round.find(params[:id])
+		roundgames = Game.where(:round_id => round.id)
+		if roundgames.empty?
+			round.destroy
+			flash[:success] = "Runde gelöscht"
+			redirect_to :back
+		else
+			flash[:warning] = "Für die Runde scheint es noch Spiele im System zu geben, daher kann sie nicht gelöscht werden!"
+			redirect_to :back
+		end
 	end
 
 end

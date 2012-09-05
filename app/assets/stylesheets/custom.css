@@ -14,7 +14,7 @@ body {
   -webkit-border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  border-bottom: 1px inset #848484;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 #logo {
@@ -103,8 +103,7 @@ a:hover {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
-  border-bottom: 1px inset #848484;
-  border-right: 1px inset #848484;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 .container-fluid > .sidebar-right {
@@ -113,8 +112,7 @@ a:hover {
 
 .hero-unit {
     background-color: #FCFCFC;
-    border-bottom: 1px inset #848484;
-    border-right: 1px inset #848484;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
     margin-bottom: none;
 }
 
@@ -149,10 +147,8 @@ a:hover {
 /* Feedback Sidebar */
 .well {
     background-color: #FCFCFC;
-    border-bottom: 1px inset #848484;
-    border-right: 1px inset #848484;
     border-radius: 4px 4px 4px 4px;
-    box-shadow: none;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
     margin-bottom: 20px;
     min-height: 20px;
     padding: 19px;
@@ -179,7 +175,7 @@ a:hover {
   -webkit-border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  border-top: 1px outset #848484;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 #footer_nav ul {
@@ -244,8 +240,7 @@ form.edit_bet {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
-  border-bottom: 1px inset #848484;
-  border-right: 1px inset #848484;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 .devise_form_field {

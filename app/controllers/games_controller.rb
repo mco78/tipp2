@@ -74,7 +74,7 @@ class GamesController < ApplicationController
 
 	def result_index
 		@title = "Ergebnisse eintragen"
-		@games = Game.where( :home_score => nil).order(:kickoff)
+		@games = Game.where( :home_score => nil).order(:kickoff).limit(36)
 	end
 
 	def fix_result

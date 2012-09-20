@@ -68,4 +68,7 @@ Tipp5::Application.configure do
 
   # google analytics
   GA.tracker = "UA-32117567-1"
+
+  #Devise Mailer
+  config.action_mailer.default_url_options = { :host => 'tipp2.net' }
 end

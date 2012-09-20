@@ -71,12 +71,12 @@ class CommunitiesController < ApplicationController
 		end
 		if @community.update_attributes(params[:community])
 			flash[:success] = "Community bearbeitet."
-			if @name_change = true
+			if @name_change == true
 				Post.create(headline: "Name der Community geändert", 
 							category: "com" + @community.id.to_s, 
 							content: "Der Admin der Community hat den Namen der Community geändert. Die Community heißt nun " + @community.name + ".")
 			end
-			if @password_change = true
+			if @password_change == true
 				Post.create(headline: "Passwort der Community geändert", 
 							category: "com" + @community.id.to_s, 
 							content: "Der Admin der Community hat das Passwort der Community geändert. Das neue Passwort ist " + @community.password + ". Das Passwort wird benötigt, um der Community beizutreten.")

@@ -16,7 +16,7 @@
 			<% unless post.user_id.nil? %>
 				 | <%= link_to User.find(post.user_id).username, user_path(User.find(post.user_id)) %>
 			<% end %>
-			<p><%= truncate(simple_format(post.content), :length => 500, :separator => ' ') %>
+			<p><%= simple_format(truncate(post.content, :length => 500, :separator => ' ')) %>
 			<% if post.content.length > 500 %>
 				<%= link_to "mehr", post %>
 			<% end %></p>

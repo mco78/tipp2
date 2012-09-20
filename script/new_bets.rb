@@ -7,7 +7,7 @@ users << user1
 users << user2
 users << user3
 
-round = Round.find(150)
+round = Round.find(232)
 games = round.games
 
 games.each do |g|

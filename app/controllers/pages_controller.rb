@@ -26,14 +26,20 @@ class PagesController < ApplicationController
 
 	def about
 		@title = "Über das Projekt"
+		@games = Game.find(:all, :conditions => ["kickoff > ?", Time.now],
+	 							:order => 'kickoff ASC', :limit => 9)
 	end
 
 	def rules
 		@title = "Regeln"
+		@games = Game.find(:all, :conditions => ["kickoff > ?", Time.now],
+	 							:order => 'kickoff ASC', :limit => 9)
 	end
 
 	def impressum
 		@title = "Impressum"
+		@games = Game.find(:all, :conditions => ["kickoff > ?", Time.now],
+	 							:order => 'kickoff ASC', :limit => 9)
 	end
 
 end

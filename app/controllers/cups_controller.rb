@@ -123,6 +123,7 @@ class CupsController < ApplicationController
 			existing_round = Round.where(:cup_id => cup.id, :leg => group[:group_order_id]).first
 			if existing_round.nil?
 				Round.create(:name 	=> group[:group_name],
+							:acronym => group[:group_name][0, 2],
 							:leg => group[:group_order_id].to_i,
 							:cup_id => cup.id,
 							:open_liga_id => group[:group_id].to_i)

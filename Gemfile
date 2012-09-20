@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'savon'
 
+
 group :development, :test do
 	gem 'sqlite3', '1.3.5'
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	
 	def index
 		@title = "Übersicht User"
-		@users = User.all.sort_by { |u| [u.last_sign_in_at ? 1 : 0, u.last_sign_in_at] }
+		@users = User.all.sort_by { |u| [u.current_sign_in_at ? 1 : 0, u.current_sign_in_at] }
 	end
 
 	def destroy

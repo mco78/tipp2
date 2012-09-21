@@ -25,7 +25,7 @@
     <% if user.last_sign_in_at.nil? %>
       <td></td>
     <% else %>
-      <td><%= user.last_sign_in_at.strftime("%d.%m.%y %H:%M") %></td>
+      <td><%= user.current_sign_in_at.strftime("%d.%m.%y %H:%M") %></td>
     <% end %>
     <td><%= user.sign_in_count %></td>
     <td><%= user.bets.count %></td>

@@ -66,7 +66,7 @@ class Cup < ActiveRecord::Base
 	end
 
 	def fix_results(cup, current_round)
-		@messages << "Wettbewerb: " + cup.name + ", Runde: " + current_round.name + " (Leg: " + current_round.leg.to_s + ", ID: " + current_round.id.to_s + ")"
+		#@messages << "Wettbewerb: " + cup.name + ", Runde: " + current_round.name + " (Leg: " + current_round.leg.to_s + ", ID: " + current_round.id.to_s + ")"
 		client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		response = client.request :web, :get_matchdata_by_group_league_saison, 
 			body: { "groupOrderID" => current_round.leg, "leagueShortcut" => cup.league_shortcut, "leagueSaison" => cup.league_season}

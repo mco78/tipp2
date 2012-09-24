@@ -13,7 +13,6 @@
 			<ul>
 				<li>Mitglied seit: <%= @user.created_at.strftime("%d.%m.%y") %></li>
 				<li>Logins: <%= @user.sign_in_count %></li>
-				<li>Letzter Login: <%= @user.current_sign_in_at.strftime("%d.%m.%y %H:%M") %></li>
 			</ul>
 
 			<h4>Spiel-Statistiken:</h4>

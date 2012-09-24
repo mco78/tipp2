@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 				points = points ++ bet.points
 			end
 		end
-		average_points = points / bet_count
-		return average_points
+		average_points = points.to_f / bet_count
+		return '%.4f' % average_points
 	end
 
 end

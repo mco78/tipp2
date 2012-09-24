@@ -224,4 +224,14 @@ class Cup < ActiveRecord::Base
 		end
 		return result_table
 	end
+
+	def self.auto_results
+    	find_each {|cup| cup.fix_current_results}
+ 	end
+
+ 	def self.update_game_dates
+	    find_each {|cup| cup.update_game_dates}
+	end
+
+
 end

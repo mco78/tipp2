@@ -1,6 +1,6 @@
 t = Thread.new do
 @cups = Cup.all
-	while true do
+	3.times do
 		tm = Time.now
 		if tm.wday === 3 #wednesday update dates
 			if tm.hour === 12
@@ -18,7 +18,7 @@ t = Thread.new do
 					10.times do |i|
 						@cups.each do |cup|
 							cup.fix_current_results
-							File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
+							#File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
 						end
 						sleep 120
 					end
@@ -31,7 +31,7 @@ t = Thread.new do
 					10.times do |i|
 						@cups.each do |cup|
 							cup.fix_current_results
-							File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
+							#File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
 						end
 						sleep 120
 					end
@@ -42,7 +42,7 @@ t = Thread.new do
 					10.times do |i|
 						@cups.each do |cup|
 							cup.fix_current_results
-							File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
+							#File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
 						end
 						sleep 120
 					end
@@ -55,7 +55,7 @@ t = Thread.new do
 					10.times do |i|
 						@cups.each do |cup|
 							cup.fix_current_results
-							File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
+							#File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
 						end
 						sleep 120
 					end
@@ -66,7 +66,7 @@ t = Thread.new do
 					10.times do |i|
 						@cups.each do |cup|
 							cup.fix_current_results
-							File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
+							#File.open("log/auto_update.log", 'a+') {|f| f.write("Zeit: " + Time.now.to_s + " *** Fix current results durchgefuert *** ")}
 						end
 						sleep 120
 					end
@@ -76,4 +76,5 @@ t = Thread.new do
 		puts "Zeit: " + Time.now.to_s
 		sleep 60
 	end
+	sleep 600
 end

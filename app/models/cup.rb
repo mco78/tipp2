@@ -229,7 +229,7 @@ class Cup < ActiveRecord::Base
     	find_each {|cup| cup.fix_current_results}
  	end
 
- 	def self.update_game_dates
+ 	def self.update_dates
 	    find_each {|cup| cup.update_game_dates}
 	end
 

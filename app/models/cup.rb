@@ -226,7 +226,65 @@ class Cup < ActiveRecord::Base
 	end
 
 	def self.auto_results
-    	find_each {|cup| cup.fix_current_results}
+    	find_each {|cup| cup.auto_fix_current_results}
+ 	end
+
+ 	def auto_fix_current_results
+ 		puts "Starte Ergebniseintragung aktueller Spieltag"
+		client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
+		response = client.request :web, :get_current_group, body: { "leagueShortcut" => league_shortcut}
+		data = data = response.to_hash[:get_current_group_response] [:get_current_group_result]
+		
+		@current_round = Round.find_by_open_liga_id(data[:group_id])
+		
+		#fix_results(cup, current_round)
+		response = client.request :web, :get_matchdata_by_group_league_saison, 
+			body: { "groupOrderID" => @current_round.leg, "leagueShortcut" => league_shortcut, "leagueSaison" => league_season}
+		data = data = response.to_hash[:get_matchdata_by_group_league_saison_response] [:get_matchdata_by_group_league_saison_result] [:matchdata]
+
+		data.each do |match|
+			@game = Game.find_by_open_liga_id(match[:match_id])
+			if @game.nil?
+				puts "Spiel in der Datenbank nicht gefunden. Keine Aktion durchgeführt."
+			else
+				puts Team.find(@game.home_team).acronym + " - " + Team.find(@game.away_team).acronym
+				if match[:match_is_finished] === true
+					if @game.home_score.nil?
+						@game.home_score = match[:points_team1]
+						@game.away_score = match[:points_team2]
+						@game.save
+						puts "Ergebnis eingetragen: " + @game.home_score.to_s + ":" + @game.away_score.to_s
+						
+						@bets = Bet.find_all_by_game_id(game.id)
+						@bet_count = @bets.count
+						@bets_fixed = 0
+						
+						@bets.each do |bet|
+							p = points_per_game(game.home_score, game.away_score, bet.home_bet, bet.away_bet)
+							bet.points = p
+							bet.save
+							@bets_fixed = @bets_fixed + 1
+						end
+
+						puts "Punkte bei " + @bets_fixed.to_s + " von " + @bet_count.to_s + " gefundenen Tipps verteilt."
+
+						if round_over(@game) === true
+							post_round_summary(@game)
+						end
+
+					else
+						if match[:points_team1].to_i == @game.home_score &&  match[:points_team2].to_i == @game.away_score
+							puts "Ergebnis ist bereits eingetragen."
+						else
+							puts "ACHTUNG: Spiel in Datenbank hat bereits Ergebnis, welches von dem Open-Liga-DB-Ergebnis abweicht! Manuell überprüfen!"
+							# Nachricht über Konflikt an Admin
+						end
+					end
+				else
+					puts "Spiel noch nicht beendet."
+				end
+			end
+		end
  	end
 
  	def self.update_dates

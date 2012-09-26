@@ -7,7 +7,7 @@ class Cup < ActiveRecord::Base
 
 	validates :name,	:presence => true, :uniqueness => true
 
-	def update_game_dates
+	def self.update_game_dates
 		cup = self
 		@messages = []
 		@messages << "Starte automatische Aktualisierung der Anstoßzeiten!"
@@ -44,16 +44,15 @@ class Cup < ActiveRecord::Base
 		@messages << "Anstoßzeiten bis Runde " + rounds.last.leg.to_s + " aktualisiert."	 
 	end
 
-	def fix_current_results
-		cup = self
+	def self.fix_current_results
 		@messages = []
 		@messages << "Starte Ergebniseintragung aktueller Spieltag"
 		client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
-		response = client.request :web, :get_current_group, body: { "leagueShortcut" => cup.league_shortcut}
+		response = client.request :web, :get_current_group, body: { "leagueShortcut" => self.league_shortcut}
 		data = data = response.to_hash[:get_current_group_response] [:get_current_group_result]
 		
 		current_round = Round.find_by_open_liga_id(data[:group_id])
-		fix_results(cup, current_round)
+		fix_results(current_round)
 		return @messages
 	end
 
@@ -65,11 +64,11 @@ class Cup < ActiveRecord::Base
 		return @messages
 	end
 
-	def fix_results(cup, current_round)
-		#@messages << "Wettbewerb: " + cup.name + ", Runde: " + current_round.name + " (Leg: " + current_round.leg.to_s + ", ID: " + current_round.id.to_s + ")"
+	def self.fix_results(current_round)
+		@messages << "Wettbewerb: " + self.name + ", Runde: " + current_round.name + " (Leg: " + current_round.leg.to_s + ", ID: " + current_round.id.to_s + ")"
 		client = Savon::Client.new("http://www.openligadb.de/Webservices/Sportsdata.asmx?WSDL")
 		response = client.request :web, :get_matchdata_by_group_league_saison, 
-			body: { "groupOrderID" => current_round.leg, "leagueShortcut" => cup.league_shortcut, "leagueSaison" => cup.league_season}
+			body: { "groupOrderID" => current_round.leg, "leagueShortcut" => self.league_shortcut, "leagueSaison" => self.league_season}
 		data = data = response.to_hash[:get_matchdata_by_group_league_saison_response] [:get_matchdata_by_group_league_saison_result] [:matchdata]
 
 		data.each do |match|

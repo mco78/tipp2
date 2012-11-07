@@ -20,7 +20,7 @@ class Cup < ActiveRecord::Base
 		# aktuelle Runde und kommende 5 Runden in ein Array packen
 		rounds = []
 		rounds << current_round
-		for i in 1..6
+		for i in 1..4
 			round = Round.find_by_leg(current_round.leg+i)
 			rounds << round
 		end

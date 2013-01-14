@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.11'
 gem 'json'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
@@ -10,9 +10,17 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'savon'
 
+group :test do
+	gem 'capybara'
+	gem 'cucumber-rails', require: false
+	gem 'database_cleaner'
+	gem 'factory_girl_rails', "~> 4.0"
+	gem 'shoulda'
+end
 
 group :development, :test do
 	gem 'sqlite3', '1.3.5'
+	gem 'rspec-rails'
 end
 
 # Gems used only for assets and not required

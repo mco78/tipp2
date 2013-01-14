@@ -23,7 +23,7 @@
 					<td> - </td>
 					<td><%= truncate(away_team.acronym, :length => 10) %></td>
 					<% if user_signed_in? %>
-						<% user_bet = @bets.where(:game_id => game.id).first %>
+						<% user_bet = current_user.bets.where(:game_id => game.id).first %>
 						<% if user_bet.nil? %>
 							<td>- : -</td>
 						<% else %>

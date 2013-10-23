@@ -17,11 +17,16 @@ class Cup < ActiveRecord::Base
 		
 		current_round = Round.find_by_open_liga_id(data[:group_id])
 
+		# sicherstellen, dass nur Runden aus aktuellem Cup ausgewählt werden
+
+		rounds_this_season = Round.where(cup_id: cup.id)
+
 		# aktuelle Runde und kommende 5 Runden in ein Array packen
+
 		rounds = []
 		rounds << current_round
 		for i in 1..4
-			round = Round.find_by_leg(current_round.leg+i)
+			round = rounds_this_season.find_by_leg(current_round.leg+i)
 			rounds << round
 		end
 
